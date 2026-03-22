@@ -357,6 +357,39 @@
     font-style: italic;
   }
 
+
+  /* Lightbox */
+  .illustration img { cursor: zoom-in; }
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    font-family: sans-serif;
+  }
+
 </style>
 </head>
 <body>
@@ -620,6 +653,33 @@
   <span class="nav-title">서문</span>
   <a href="DIA-ch1.html" class="nav-btn" title="제1장">다음 ▶</a>
 </nav>
+
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+document.addEventListener('click', function(e) {
+  var img = e.target;
+  if (img.tagName === 'IMG' && img.closest('.illustration')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  if (img.tagName === 'IMG' && img.closest('.map-container')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
 
 </body>
 </html>

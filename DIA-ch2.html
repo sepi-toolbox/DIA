@@ -386,6 +386,39 @@
     font-style: italic;
   }
 
+
+  /* Lightbox */
+  .illustration img { cursor: zoom-in; }
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    font-family: sans-serif;
+  }
+
 </style>
 </head>
 <body>
@@ -563,7 +596,7 @@
 
 <p>구출 작업 중 소동이 마귀를 끌어들이거나(아래 "적의를 품은 순찰대" 참조) 기타 반갑지 않은 관심을 끌 수 있다.</p>
 
-<p>캐릭터들이 구출에 성공하면, 무너진 건물 아래에서 질서 선 성향의 방패 드워프 셋을 꺼낸다: 스트로빈 아이언피스트(Strovin Ironfist), 카트라 볼더스턴(Kartra Boulderstern), 벨코라 애쉔웰(Velkora Ashenwell). 스트로빈과 카트라는 노동자(평민 능력치 블록 사용)이지만, 벨코라는 석공이자 드워프의 신 모라딘(Moradin)의 시종(acolyte)이다. 그녀의 치유 능력은 높은 전당에서 환영받는 자원이 될 것이다. 세 드워프 모두 공용어와 드워프어를 구사하며, 60피트의 암시야를 가진다. 또한 독 피해에 대한 저항력과 독에 걸리는 것에 대한 내성 굴림 이점을 가진다.</p>
+<p>캐릭터들이 구출에 성공하면, 무너진 건물 아래에서 질서 선 성향의 방패 드워프 셋을 꺼낸다: 스트로빈 아이언피스트(Strovin Ironfist), 카트라 발더스턴(Kartra Boulderstern), 벨코라 애쉔웰(Velkora Ashenwell). 스트로빈과 카트라는 노동자(평민 능력치 블록 사용)이지만, 벨코라는 석공이자 드워프의 신 모라딘(Moradin)의 시종(acolyte)이다. 그녀의 치유 능력은 높은 전당에서 환영받는 자원이 될 것이다. 세 드워프 모두 공용어와 드워프어를 구사하며, 60피트의 암시야를 가진다. 또한 독 피해에 대한 저항력과 독에 걸리는 것에 대한 내성 굴림 이점을 가진다.</p>
 
 <!-- ============================================================ -->
 <h4 id="ch2-enc-cry">도움을 구하는 외침(Cry for Help)</h4>
@@ -1410,4 +1443,31 @@ function toggleSidebar() {
 
 <div class="section-divider">&#9830; &#9830; &#9830;</div>
 <p style="text-align:center; font-size:0.85em; color:#888;">Descent into Avernus — Chapter 2<br>한국어 번역본</p>
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+document.addEventListener('click', function(e) {
+  var img = e.target;
+  if (img.tagName === 'IMG' && img.closest('.illustration')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  if (img.tagName === 'IMG' && img.closest('.map-container')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
 </body></html>
