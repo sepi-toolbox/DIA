@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리믹스 파트 2(Remix Part 2)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  ul, ol { margin: 0 0 14px 24px; }
+  li { margin-bottom: 6px; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  strong { color: var(--heading); }
+
+  /* Compact Chapter Nav */
+  .chapter-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 24px;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding: 8px 0;
+    gap: 8px;
+  }
+  .chapter-nav .nav-btn {
+    padding: 8px 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    min-width: 80px;
+    text-align: center;
+  }
+  .chapter-nav .nav-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .chapter-nav .nav-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .chapter-nav .nav-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chapter-nav .nav-home {
+    padding: 8px 12px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .chapter-nav .nav-home:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  .illustration {
+    margin: 24px 0;
+    text-align: center;
+  }
+  .illustration img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 12px var(--shadow);
+  }
+  .illustration .caption {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+    color: var(--accent2);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Lightbox */
+  .illustration img { cursor: zoom-in; }
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    font-family: sans-serif;
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="DIA-home.html" class="nav-home" title="홈">⌂</a>
+  <a href="DIA-remix.html" class="nav-btn" title="파트 1">◀ 이전</a>
+  <span class="nav-title">리믹스 파트 2</span>
+  <a href="DIA-remix-part2B.html" class="nav-btn" title="파트 2B">다음 ▶</a>
+</nav>
+
+<h1>
+  리믹스 파트 2
+  <span class="subtitle">Remix Part 2</span>
+</h1>
+
+<!-- Sidebar TOC -->
+<button class="sidebar-toc-toggle" id="tocToggle" onclick="document.getElementById('sidebarToc').classList.toggle('open'); this.classList.toggle('open');">목차</button>
+<aside class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="document.getElementById('sidebarToc').classList.remove('open'); document.getElementById('tocToggle').classList.remove('open');">✕</button>
+  <h4>파트 2 목차</h4>
+  <ul>
+    <li class="toc-h2"><a href="#character-creation">캐릭터 생성</a></li>
+    <li class="toc-h2"><a href="#gmpcs">GMPC</a></li>
+    <li class="toc-h3"><a href="#reya">레야 맨틀몬(Reya Mantlemorn)</a></li>
+    <li class="toc-h3"><a href="#lulu">룰루(Lulu the Hollyphant)</a></li>
+    <li class="toc-h3"><a href="#tarina">타리나(Tarina)</a></li>
+  </ul>
+</aside>
+
+<!-- ============================================================ -->
+
+<p>파트 1에서 우리는 <em>아베르누스로의 하강(Descent Into Avernus)</em>의 플레이어들이 <strong>엘투렐(Elturel)</strong> 출신이거나 그 도시와 강한 연결을 가진 캐릭터를 만들어야 한다는 아이디어를 간략히 논의했습니다. 그런 연결만으로는 플레이어들이 도시에 관심을 갖게 만들 수 없다는 결론을 내렸지만, 그렇다고 플레이어들에게 그런 캐릭터를 만들도록 권장하지 말라는 뜻은 아닙니다. 오히려 그 반대입니다. 실제로 테이블에서 일어나는 일이 캐릭터 배경 설정에만 존재하는 것보다 항상 더 의미 있겠지만, 배경 설정에 무언가를 확립해 두면 그것을 테이블로 가져올 수 있는 경로가 만들어집니다.</p>
+
+<p>("테이블에서(at-table)"를 "온스크린(onscreen)"이나 "온스테이지(onstage)"처럼 하나의 단어로 만들 수 있을까요? 유용할 것 같은데요. 하지만 본론에서 벗어나네요.)</p>
+
+<h2 id="character-creation">캐릭터 생성(Character Creation)</h2>
+
+<p>한편으로, <em>모든</em> 캐릭터가 그런 개인적 연결을 가져야 한다고 느끼지는 마세요. 전부 그래도 괜찮지만, 사실 그렇지 않은 편이 더 나을 수도 있다고 봅니다. 모든 캐릭터에 개인적 연결을 부여하면 더 풍부한 경험이 될 것 같지만, 외부인의 시점을 제거함으로써 실제로는 가능한 경험의 폭을 좁히게 됩니다.</p>
+
+<p>(이 조언은 일반화할 수 있습니다: "이 게임은 X에 관한 것이니까, 모두 Y인 캐릭터를 만들어주세요"라고 말했는데 한 플레이어가 "사실 Y가 아닌 캐릭터를 해도 될까요?"라고 물어온다면, 저는 그것을 어떻게 작동시킬 수 있을지 멈춰서 생각해보는 법을 배웠습니다. 부분적으로는, 대부분의 "기본은 예스" 관행처럼, 플레이어들이 관심 있어 하는 것을 따라가는 것이 본질적으로 좋은 생각이기 때문이고, 또한 Y들의 테이블에 Y가 아닌 캐릭터가 있으면 가치 있는 다양성이 만들어진다는 걸 배웠기 때문입니다.)</p>
+
+<!-- ============================================================ -->
+<h2 id="gmpcs">GMPC</h2>
+
+<p>하지만 오늘 주로 다룰 것은 <em>아베르누스로의 하강</em>의 <strong>GMPC</strong>들입니다.</p>
+
+<p>GMPC는 NPC와 같은 것이 아닙니다. GMPC란 GM이 본질적으로 자기 캠페인의 플레이어가 되려고 하면서, 파티의 다른 PC와 구별할 수 없는 캐릭터를 운영하는 것입니다. 기술적으로 가능하고 (여기저기서 성공 사례를 찾을 수 있지만), 이것은 대체로 두 가지 이유 중 하나로 장렬하게 실패합니다:</p>
+
+<p><strong>첫째:</strong> GMPC가 노골적으로 캠페인 전체의 스타/스포트라이트 독식자가 되거나, 플레이어들을 강제로 레일로드하는 데 사용됩니다.</p>
+
+<p>때로는 GM이 의도적으로 이렇게 하지만, 종종 의도한 바가 아닙니다. 문제의 근원은 GM이 다른 플레이어에게는 없는 <strong>특권적 정보</strong>를 가지고 있다는 점입니다. 모험을 준비할 때, GMPC가 무엇을 할지 100% 정확도로 예측할 수 있다는 사실이 쉽게 기댈 수 있는 목발이 됩니다. 모험을 "플레이"할 때는, 시나리오가 어떻게 설계되었고 의도된 행동 방침이 무엇인지 알고 있어서 불가피하게 의사결정에 편향이 생깁니다. 게다가, 다른 플레이어들도 GMPC가 모험과 이런 특권적 관계를 맺고 있다는 걸 알기 때문에, GM이 캐릭터 측 의사결정을 GM 측 의사결정에서 성공적으로 격리하더라도 PC들의 GMPC에 대한 관계에 영향을 미칩니다.</p>
+
+<p>다른 흔한 결과는 GMPC가 집단 의사결정에 어색하게 참여하지 않거나, 모두가 그 캐릭터의 존재를 잊어버려서 게임 세계에서 자주 "사라지는" 이상한 반쪽짜리 캐릭터가 되는 것입니다.</p>
+
+<p>이런 일은 보통 GM이 첫 번째 문제를 의식적으로 피하려 할 때 발생합니다. 예를 들어, "나틱 숲을 확인하러 가야 할 것 같아"라고 말하면 다른 플레이어들이 "GM이 나틱 숲으로 가라고 하고 있다"로 해석할 거라는 걸 아는 거죠. 그래서 GMPC는 절대 의견을 제시하지 않습니다. (이 시나리오는 GMPC가 그룹에서 "필수적"이라고 인식되는 역할을 채우기 위해 플레이되는 경우에 자주 발생합니다. GM은 기본적으로 GMPC가 없는 게 낫지만, 어떤 이유에서든 그래야 한다고 느끼는 거죠.)</p>
+
+<p>이에 대해 이전에 글을 쓴 적이 있지만, 요약하자면 저는 GMPC뿐 아니라 NPC 동맹도 일반적으로 피하려 합니다. (핸치맨이나 고용인이 있는 게임을 운영할 때는, 플레이어들이 직접 운영하게 하는 것을 선호합니다.)</p>
+
+<p>GMPC에 대해 어떤 생각이든, <em>아베르누스로의 하강</em>의 GMPC들은 대체로 디자인의 목발로 사용되고 있으며 이를 제거하면 좋을 것입니다. 제거하기 가장 쉬운 곳은 캐릭터 생성 단계입니다: 시나리오에서 GMPC가 수행하는 필수적 역할을 PC에 통합할 수 있다면, GMPC를 쉽게 삭제할 수 있습니다.</p>
+
+<!-- ============================================================ -->
+<h3 id="reya">레야 맨틀몬(Reya Mantlemorn)</h3>
+
+<p><strong>레야 맨틀몬(Reya Mantlemorn)</strong>은 <em>아베르누스로의 하강</em>에서 가장 명백한 GMPC입니다. 그녀는 세 가지 기능을 수행합니다:</p>
+
+<ol>
+<li>길에서 플레이어들에게 다가와서 <strong>"고위 감독관 크리그가 아직 살아 있어요!"</strong>라고 말합니다.</li>
+<li>파티가 <strong>엘투렐</strong>로 차원이동하면, 레야 맨틀몬이 <strong>"하이 홀(High Hall)로 가야 해요"</strong>라고 말해야 합니다.</li>
+<li><strong>지옥기수단(Hellrider)</strong>으로서, 캠페인의 큰 반전이 일어날 때마다 "믿을 수 없어?!"라는 온갖 멋진 감정 반응을 할 수 있습니다.</li>
+</ol>
+
+<p>이 중 첫 번째는 애초에 나쁜 디자인입니다: PC들이 크리그가 살아 있다는 사실을 발견하는(충격적 반전!) 대신, 전에 한 번도 만난 적 없는 임의의 NPC가 그냥 걸어와서 알려줍니다. 그러니 이 부분은 통째로 삭제하면 됩니다.</p>
+
+<p>두 번째의 경우, 리믹스 파트 5에서 <strong>헬투렐(Hellturel)</strong>에 대한 접근 방식을 완전히 개편할 것이므로, 그때도 레야가 필요 없을 것입니다. 이런 변경을 적용하지 않기로 한다면, 엘투렐에 있는 아무 NPC나 PC들에게 같은 말을 하면 됩니다 ("보라! GM께서 나에게 말씀하셨으니, 그대들은 하이 홀로 가야 하느니라!").</p>
+
+<p>세 번째의 경우, 맹세에 개인적으로 배신당한 감정을 느끼고 이후 자기 기사단의 전체 역사와 정체성이 비겁한 배반자들의 거짓말 위에 세워졌다는 계시에 충격받는 지옥기수단원이 있는 것은 분명히 매우 효과적입니다. (이상하게도, 모험 원본에서는 레야가 후자의 부분이 일어나기 전에 파티를 떠나지만, 그럼에도 불구하고.)</p>
+
+<p>하지만 그런 반응을 할 수 있도록 배치된 것이 <strong>PC</strong>라면 훨씬 <strong>더</strong> 효과적일 거라는 점은 꽤 분명합니다.</p>
+
+<p>그러므로, 요약하자면: <strong>최소 한 명의 플레이어에게 지옥기수단원을 플레이하도록 권장하세요.</strong></p>
+
+<p>그것만으로 레야의 존재 이유 전체가 제거됩니다. 캠페인에서 삭제하세요.</p>
+
+<div class="sidebar">
+<h3>참고</h3>
+<p>지옥기수단원이나 <strong>동반자 기사단(Order of the Companion)</strong>의 기사를 플레이하는 사람에게는 <strong>결의의 서약(Creed Resolute)</strong> 사본을 반드시 주세요 (파트 4B 참조).</p>
+</div>
+
+<!-- ============================================================ -->
+<h3 id="lulu">룰루(Lulu the Hollyphant)</h3>
+
+<p>약간 더 특이한 경우가 <strong>홀리펀트 룰루(Lulu the Hollyphant)</strong>입니다.</p>
+
+<p>룰루는 황금 맘모스 형태일 때 <strong>지옥기수단의 돌격(Charge of the Hellriders)</strong> 동안 <strong>자리엘(Zariel)</strong>의 전쟁 기마로 복무했습니다. 지옥기수단이 패배한 후, 자리엘은 룰루에게 자신의 성검을 주며 지옥 어딘가에 숨기라고 명령했습니다. 룰루는 이후 배신당해 <strong>스틱스 강(River Styx)</strong>의 물이 뿌려져 기억을 잃었습니다.</p>
+
+<p>룰루의 기억을 회복하는 것은 <em>아베르누스로의 하강</em>의 주요 기둥 중 하나이며, 리믹스 파트 6에서 더 자세히 살펴볼 것입니다. 룰루를 NPC로 플레이하는 것은 사실 잘 작동합니다: 그녀는 진정한 GMPC라기보다는 귀여운 조수나 사역수에 가깝습니다.</p>
+
+<p>하지만 룰루가 PC가 되지 못할 이유는 없습니다.</p>
+
+<p>룰루의 잃어버린 기억과 과거의 미스터리에 플레이어들이 투자하게 될 가능성은, 그녀가 "자기 편"일 때 훨씬 더 높아집니다. 그리고 작고 빛나는 황금색 코끼리를 플레이하는 것은 분명 그 플레이어에게 멋지고 기억에 남는 경험이 될 것입니다.</p>
+
+<p>비전통적인 플레이에 기꺼이 나서는 플레이어가 있다면, <em>아베르누스로의 하강</em> 237페이지의 홀리펀트 스탯 블록을 가져와서 바로 시작하게 하면 됩니다. (50페이지에 따라 시간이 지나면서 능력을 천천히 회복시키세요.) 또는 홀리펀트를 플레이 가능한 PC 종족으로 재작업할 수도 있습니다. Donathin Frye와 Kienna Shaw가 이 작업을 이미 해두었습니다.</p>
+
+<p>물론, 스탯 블록은 과제의 일부에 불과합니다: 원본 캠페인에서 룰루는 파트 4: 캔들킵(Candlekeep)까지 등장하지 않습니다. 해결책은?</p>
+
+<p><strong>더 일찍 등장시키면 됩니다.</strong></p>
+
+<p>한 가지 방법은 "재앙의 서막" 오프닝의 매우 짧은 버전을 사용하는 것입니다: PC들이 (서로 모를 수도 있는 상태로) 엘투렐의 거리를 걷고 있습니다. 그중 하나가 작고 날아다니는 코끼리입니다. 갑자기 하늘의 <strong>동반자(Companion)</strong>에 무언가 이상이 생깁니다. "안 돼!" 코끼리가 말합니다. "이게 뭔지 알아!" 순수한 본능적 공포에서 그녀는 자신과 가장 가까운 사람들(즉, 다른 PC들)을 도시 바로 바깥의 야생 지대로 텔레포트시킵니다.</p>
+
+<p>그곳에 도착하면, 그녀는 왜 그랬는지 모릅니다. 어떻게 그랬는지도 모릅니다 (텔레포트 능력은 나중에야 회복됩니다). 단지 당장 그 도시에서 빠져나와야 한다는 것만 알았습니다! (그리고 잠시 후 도시 전체가 바닥으로 쭈그러들며 사라져서, 그것이 옳았음을 증명합니다.)</p>
+
+<p>(룰루가 PC가 아닌 경우에도 이 설정을 사용할 수 있지만, 첫 몇 시나리오에서 그녀의 존재가 어떤 영향을 미칠지 추가적인 고려가 필요할 수 있습니다.)</p>
+
+<p>PC 그룹에 자리엘의 기억상실 전 전쟁 기마가 우연히 포함되어 있다는 게 너무 편의적이지 않냐고요? 음... 맞습니다. 하지만 룰루가 PC들이 아베르누스로 차원이동시켜줄 사람에게 임의로 보내져서 그 사람과 우연히 어울리고 있는 것보다 더 편의적이지는 않습니다. 더 정당화하고 싶다면, 룰루에게 특정 장소에 가야 한다거나 특정 PC를 찾아야 한다는 성스러운 환시를 주세요. 하지만 아마 그럴 필요는 없을 겁니다.</p>
+
+<p>룰루의 구두에 뛰어들 의향이 있는 플레이어가 없다면, 그래도 Gale Force 9의 스태추엣이나 Beadle & Grimm의 플러시로 테이블에 물리적 존재감을 부여하는 것을 추천합니다.</p>
+
+<!-- ============================================================ -->
+<h3 id="tarina">타리나(Tarina)</h3>
+
+<p><strong>타리나(Tarina)</strong>는 GMPC가 아닙니다. 그녀는 <strong>화염 조지(Flame Zodge)</strong>가 PC들을 <strong>엘프송 선술집(Elfsong Tavern)</strong>에서 만나라고 보내는 첩보원입니다. 캠페인에서 그녀의 기능은 <strong>죽은 삼신(Dead Three)</strong> 광신도들이 목격된 목욕탕을 가리키는 것입니다.</p>
+
+<p>하지만 이것은 사실 PC를 도입하기에 이상적인 방법입니다: 타리나를 만나러 보내는 대신, 조지의 접선 상대가 <strong>마지막 PC</strong>입니다. 그 플레이어에게 타리나가 가지고 있어야 할 정보를 주고, 동료 플레이어들에게 브리핑하게 하세요. (타리나와 달리, 그 PC는 당연히 작전에 함께 동행합니다.)</p>
+
+<p>이것이 좋은 아이디어가 될 수 있는 몇 가지 이유가 있습니다:</p>
+
+<ul>
+<li>"비밀" 정보를 가지고 브리핑을 수행하는 플레이어는 특별한 느낌을 받습니다. 멋지고 색다른 일을 하는 거니까요.</li>
+<li>메타게임 관점에서, 임의의 NPC가 아닌 다른 PC가 이 임무에 대해 말해주기 때문에 플레이어 모두가 더 투자하게 됩니다.</li>
+</ul>
+
+<p>캠페인 시작에서 이런 식으로 PC들을 유기적으로 서로 소개하는 것은 약간 까다로울 수 있지만, 다시 한번, 이런 것들을 테이블 위에 올려놓으면 더 의미 있어집니다. (루크와 오비완이 한 솔로와 츄바카를 처음 만나는 장면을 보는 것이, GM이 "자, 여러분 모두 알데란으로 향하는 우주 화물선에 타고 있습니다"라고 말하는 것보다 얼마나 더 흥미로운지 생각해보세요.)</p>
+
+<p>리믹스 파트 1에서 설명한 피난민 캐러밴 시나리오를 사용하고 있다면, 타리나를 이렇게 교체하는 것은 덜 편리하고 작동하지 않을 수 있습니다. 그래서 여기서는 주로 캠페인을 "원본에 가깝게" 운영하는 분들을 위한 흥미로운 기회로 언급합니다.</p>
+
+<p>그렇긴 하지만, 여전히 이것을 실현할 수 있습니다. 분명히 첫 세션에 참석하지 못하는 플레이어가 있다면... 짜잔. 문제 해결입니다.</p>
+
+<p>또는, 플레이어를 조금 더 참여시키는 방식으로도 가능합니다: 첫 시나리오에서 피난민 중 한 명을 플레이해 달라고 하세요. 아마 세션 막바지에 <strong>자리엘 교단(Cult of Zariel)</strong>에 의해 잔인하게 살해당할 수도 있습니다. 또는 멀쩡히 살아남아 발더스 게이트에 도착하면 간단히 작별 인사를 할 수도 있습니다. 그리고 몇 장면 후, 파티가 엘프송 선술집에서 그 플레이어의 새 PC를 만납니다.</p>
+
+<p>저는 교체 캐릭터나 새 플레이어를 캠페인에 도입할 때 비슷한 기법을 적잖이 사용해 왔습니다. 가장 최근에는, <em>영원의 거짓말(Eternal Lies)</em> 두 번째 진행에서 새 플레이어가 합류할 때 그룹이 원정 중이라 새 PC가 그들을 찾았다고 합리적으로 설명할 수 없는 곳에 있었습니다. 그래서 그 플레이어에게 원정대의 현지 가이드 역할을 맡겼습니다.</p>
+
+<p>그는 이 캐릭터를 몇 세션 동안 플레이했고, 저와 그 플레이어 모두 이 캐릭터가 영구적이지 않다는 걸 알았기 때문에 둘 다 큰 위험을 감수했습니다: 결국 그 캐릭터는 완전히 미쳐서 자기 손가락 여러 개를 갉아먹은 후 정신병원에 입원해야 했습니다.</p>
+
+<p>나머지 그룹은 충격에 빠졌습니다: 계획한 건 아니었지만, 저와 그 플레이어는 다른 플레이어들에게 이것이 새 플레이어의 PC가 아니라고 명시적으로 말한 적이 없었고, 그들이 알고 있으리라 짐작했지만 실은 몰랐습니다. 그래서 이 캐릭터의 완전한 붕괴와 파멸이 정말 큰 충격으로 다가왔습니다. PC라고 생각했으니까요.</p>
+
+<p>(플레이어가 모든 NPC를 PC만큼 신경 쓴다고 가장할 수도 있고, 관객이 기관총에 쓰러지는 이름 모를 잡졸 #23호에 대해 아이언맨의 죽음만큼 관심을 가진다고 가장할 수도 있습니다. 하지만 우리 뇌는 그렇게 작동하지 않습니다. PC/NPC의 경계는 특히 현실적인데, 테이블에 있는 다른 플레이어가 자기 캐릭터로서 "겪고 있는" 것에 공감하기 때문입니다. 저는 사람들이 NPC 때문에 게임 테이블에서 문자 그대로 울음을 터뜨리는 것을 본 적이 있습니다 &mdash; 아무도 NPC에 신경 쓰지 않는다고 말하는 게 아닙니다. 다만 테이블의 조쉬와 게임 세계의 산티노 사이의 경계가 다른 매체에서 창작자와 창작물 사이의 경계보다 좀 덜 명확하다는 것입니다.)</p>
+
+<p>하지만 본론에서 벗어났네요.</p>
+
+<!-- Bottom Nav -->
+<div class="section-divider">* * *</div>
+
+<nav class="chapter-nav">
+  <a href="DIA-home.html" class="nav-home" title="홈">⌂</a>
+  <a href="DIA-remix.html" class="nav-btn" title="파트 1">◀ 이전</a>
+  <span class="nav-title">리믹스 파트 2</span>
+  <a href="DIA-remix-part2B.html" class="nav-btn" title="파트 2B">다음 ▶</a>
+</nav>
+
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+document.addEventListener('click', function(e) {
+  var img = e.target;
+  if (img.tagName === 'IMG' && img.closest('.illustration')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  if (img.tagName === 'IMG' && img.closest('.map-container')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
