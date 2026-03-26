@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리믹스 파트 3C: 반탐푸르의 진실 — The Vanthampur Revelations</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  ul, ol { margin: 0 0 14px 24px; }
+  li { margin-bottom: 6px; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  strong { color: var(--heading); }
+
+  /* Compact Chapter Nav */
+  .chapter-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 24px;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding: 8px 0;
+    gap: 8px;
+  }
+  .chapter-nav .nav-btn {
+    padding: 8px 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    min-width: 80px;
+    text-align: center;
+  }
+  .chapter-nav .nav-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .chapter-nav .nav-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .chapter-nav .nav-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chapter-nav .nav-home {
+    padding: 8px 12px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .chapter-nav .nav-home:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  .illustration {
+    margin: 24px 0;
+    text-align: center;
+  }
+  .illustration img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 12px var(--shadow);
+  }
+  .illustration .caption {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+    color: var(--accent2);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Lightbox */
+  .illustration img { cursor: zoom-in; }
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    font-family: sans-serif;
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="DIA-home.html" class="nav-home" title="홈">⌂</a>
+  <a href="DIA-remix-part3B.html" class="nav-btn" title="파트 3B">◀ 이전</a>
+  <span class="nav-title">리믹스 파트 3C: 반탐푸르의 진실</span>
+  <a href="DIA-remix-part3D.html" class="nav-btn" title="파트 3D">다음 ▶</a>
+</nav>
+
+<h1>
+  반탐푸르의 진실
+  <span class="subtitle">The Vanthampur Revelations</span>
+</h1>
+
+<!-- Sidebar TOC -->
+<button class="sidebar-toc-toggle" id="tocToggle" onclick="document.getElementById('sidebarToc').classList.toggle('open'); this.classList.toggle('open');">목차</button>
+<aside class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="document.getElementById('sidebarToc').classList.remove('open'); document.getElementById('tocToggle').classList.remove('open');">✕</button>
+  <h4>파트 3C 목차</h4>
+  <ul>
+    <li class="toc-h2"><a href="#remixing-conspiracy">음모 리믹스하기</a></li>
+    <li class="toc-h2"><a href="#hooks">훅</a></li>
+    <li class="toc-h3"><a href="#zodge-briefing">조지의 브리핑</a></li>
+    <li class="toc-h3"><a href="#tarina-lead">타리나의 단서</a></li>
+    <li class="toc-h3"><a href="#investigating-murders">살인 사건 수사</a></li>
+    <li class="toc-h2"><a href="#leads">단서(시나리오 풀기)</a></li>
+    <li class="toc-h3"><a href="#lead-poseidon">포이즌드 포세이돈</a></li>
+    <li class="toc-h3"><a href="#lead-amrik">암릭 반탐푸르</a></li>
+    <li class="toc-h3"><a href="#lead-dungeon">죽은 삼신의 던전</a></li>
+    <li class="toc-h3"><a href="#lead-manor">반탐푸르 저택</a></li>
+    <li class="toc-h3"><a href="#lead-puzzlebox">지옥 퍼즐상자</a></li>
+    <li class="toc-h2"><a href="#concept-solve">컨셉 풀기</a></li>
+    <li class="toc-h3"><a href="#victims-knights">엘투가드 기사단의 후손인 피해자들</a></li>
+    <li class="toc-h3"><a href="#gargauth-shield">가르가우스 / 숨겨진 군주의 방패</a></li>
+    <li class="toc-h3"><a href="#kreeg-cultist">크리그는 광신도</a></li>
+    <li class="toc-h3"><a href="#elturel-devils">엘투렐은 악마들에 의해 파괴되었다</a></li>
+    <li class="toc-h2"><a href="#portyr-politics">포르티르 정치</a></li>
+    <li class="toc-h2"><a href="#alternative-hook">대안 훅</a></li>
+  </ul>
+</aside>
+
+<!-- ============================================================ -->
+
+<p>파트 3에서 논의했듯이, 반탐푸르 수사는 세 개의 노드로 구성됩니다:</p>
+
+<ul>
+<li>죽은 삼신의 던전(Dungeon of the Dead Three)</li>
+<li>로우 랜턴의 암릭 반탐푸르(Amrik Vanthampur @ the Low Lantern)</li>
+<li>반탐푸르 저택(Vanthampur Manor)</li>
+</ul>
+
+<p>여기에 네 번째 노드를 추가할 것입니다:</p>
+
+<p><strong>포이즌드 포세이돈(The Poisoned Poseidon)</strong></p>
+
+<p>포이즌드 포세이돈은 좌초된 배를 개조해 무두질 공장으로 사용하고 있는 곳입니다. 또한 죽은 삼신 광신도들이 피난민을 살해한 뒤 시체를 유기하는 장소이기도 합니다. 이 노드를 시나리오에 추가하는 데는 몇 가지 이유가 있습니다:</p>
+
+<p>첫째, 아래의 "포르티르 정치"에서 보게 되겠지만, 이 캠페인 구간을 강화하여 PC들에게 발더스 게이트의 변화하는 정치 상황(그리고 그것이 그들이 관심 갖는 피난민들과 반탐푸르의 음모에 어떻게 연결되는지)을 보여주는 창을 제공하고 싶었습니다. 해당 자료에 가장 효과적인 구조를 위해서는 죽은 삼신의 던전 이전에 추가적인 "박자"가 필요했고, 따라서 노드가 하나 더 필요합니다.</p>
+
+<p>둘째, 온라인에서 DM들의 광범위한 피드백에 따르면, 죽은 삼신의 던전은 2레벨 PC들보다 3레벨 PC들에게 더 나은 경험을 제공한다고 합니다. 여기에 노드를 추가하면 마일스톤 레벨업을 위한 자연스러운 기회도 생깁니다. 캠페인 1막에서 PC들은 다음 시점마다 레벨업해야 합니다:</p>
+
+<ul>
+<li>발더스 게이트 도착</li>
+<li>포이즌드 포세이돈 <strong>또는</strong> 암릭 반탐푸르 (둘 중 먼저 완료하는 쪽)</li>
+<li>죽은 삼신의 던전</li>
+<li>반탐푸르 저택</li>
+</ul>
+
+<p>즉, 캔들킵(그리고 이어서 아베르누스)으로 향할 때 5레벨이 됩니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="remixing-conspiracy">음모 리믹스하기(Remixing the Conspiracy)</h2>
+
+<p>무언가를 만드는 방법은 수백만 가지가 있지만, 보통 모험이나 캠페인을 디자인할 때 제가 처음 하는 일은 단순히 아이디어를 브레인스토밍하는 것입니다. (<em>5 노드 미스터리(5 Node Mystery)</em>에서 이것의 간략한 버전을 설명한 바 있습니다.) 여기서는 <em>아베르누스로의 하강</em>의 원재료를 리믹스하고 있으므로, 그 단계는 대부분 건너뛸 수 있습니다.</p>
+
+<p>하지만 실제 디자인 작업 — 특정 시나리오가 플레이에서 어떻게 작동할지 생각하기 시작할 때 — 제가 처음 집중하는 것은 시나리오가 <strong>게임 세계에서 어떻게 작동하는가</strong>입니다. 그걸 파악하면, 어떤 시나리오 구조를 사용할지, PC들이 어떻게 시나리오에 끌려들어올 수 있는지 등을 알아낼 수 있습니다. (이 과정에서 테이블 경험을 촉진하기 위해 게임 세계의 배치를 거의 확실히 조정하게 되지만, 시뮬레이션, 도전, 드라마, 실용성, 범위 등의 요소를 균형 잡는 것 — 그리고 어떤 것이 더 중요하거나 가치 있는지 — 는 (a) 개인적 취향의 문제이고, (b) 상황에 따라 다르며, (c) 오늘 파고들 생각이 없는 벌레 통입니다.)</p>
+
+<p>긴 이야기를 짧게 하면, 리믹스에서 지옥기수단과 동반자 기사단 후손을 살해하려는 반탐푸르 음모는 게임 세계에서 이렇게 작동합니다:</p>
+
+<ul>
+<li><strong>암릭 반탐푸르(Amrik Vanthampur)</strong>는 피난민을 발더스 게이트로 밀입국시키는 암시장 자원으로 자리 잡았습니다. 그의 요원들은 성 밖 피난민 야영지를 돌아다니고, 그는 로우 랜턴(Low Lantern)에서 사랑하는 이들을 성 안으로 데려오고 싶어하는 피난민들을 상대로 장사합니다. (이것은 파트 3H에서 설명됩니다.)</li>
+<li>이를 통해 암릭은 원하는 혈통의 피난민을 식별하고 추적할 수 있는 위치에 놓입니다.</li>
+<li><strong>반탐푸르 공작(Duke Vanthampur)</strong>은 <strong>타비우스 크리그(Thavius Kreeg)</strong>와 <strong>가르가우스(Gargauth)</strong>의 도움을 받아, 실제 살인을 수행할 <strong>죽은 삼신 광신도(Dead Three Cultists)</strong>와 거래를 맺었습니다. (파트 3B 참조.)</li>
+<li>이 작전은 <strong>모트록(Mortlock)</strong>과 죽은 삼신 교단 지도자들이 죽은 삼신의 던전에서 감독합니다. 암릭이 표적을 식별하면 모트록에게 전달하고, 모트록은 죽은 삼신 광신도들에게 표적을 감시하도록 지시합니다. (파트 3F 참조.)</li>
+<li>실제 살인은 포이즌드 포세이돈에서 활동하는 죽은 삼신 광신도들이 수행합니다. 표적의 위치와 신원이 확인되면, 감시 팀이 해당 정보를 포이즌드 포세이돈에 보고합니다. (파트 3E 참조.)</li>
+<li>포세이돈의 타격 팀이 피해자를 납치하여 도살장으로 끌고 와서 죽인 뒤, 시체를 인사이트 공원(Insight Park)에 유기합니다. (파트 3D 참조.)</li>
+</ul>
+
+<p>이 시점에서, 시나리오 작동 방식의 작은 다이어그램을 만들 수 있습니다:</p>
+
+<p><em>피난민들이 암릭에게 도움을 요청하면, 암릭이 그 정보를 죽은 삼신의 던전에 전달하고, 던전이 표적 정보를 포이즌드 포세이돈에 넘기면, 포세이돈이 표적 피난민을 살해합니다.</em></p>
+
+<p>(반드시 종이에 그려볼 필요는 없지만, 시각화하는 것이 도움이 될 수 있습니다.)</p>
+
+<p>이것은 PC들이나 그들의 시나리오 관여와는 아무 관계가 없다는 점에 주목하세요. 지금은 그것에 전혀 집중하고 있지 않습니다. 모든 주의를 게임 세계에서의 상황의 실제적 세부 사항을 파악하는 데 쏟고 있습니다.</p>
+
+<p>이러한 실제적 세부 사항의 성격도 크게 다를 수 있습니다. 하지만 이렇게 악당들이 진행 중인 프로젝트의 한가운데에 있는 상황에서는, 결과물이 보통 정보, 돈, 사람 등의 물류 지도가 됩니다. 이것은 자연스럽게 노드 기반 시나리오 디자인에 적합합니다.</p>
+
+<div class="sidebar">
+<h3>선택지: 햄혹스 도살장</h3>
+<p><em>아베르누스로의 하강</em> 197페이지에는 햄혹스 도살장(Hamhocks Slaughterhouse)에 기반을 둔 죽은 삼신 광신도 집단이 있는데, 이들도 막연하고 불특정한 이유로 도시 전역에서 사람을 살해한 뒤 스마일린 보어(Smilin' Boar) 선술집에 시체를 유기합니다. 원래는 이들을 반탐푸르 음모에 합류시킬 계획이었지만, 잘 맞지 않는다는 걸 깨달았습니다: 도살장은 성벽 밖에 있는데(발굽 달린 동물은 성벽 안에 들어갈 수 없으므로), 죽은 삼신이 피난민을 성 <em>밖으로</em> 밀반출하고 살해한 뒤 다시 성 <em>안으로</em> 밀입국시켜 시체를 유기하는 건 말이 안 됩니다.</p>
+<p>하지만 이 캠페인 구간에 더 많은 복잡성을 추가하고 싶다면 여전히 이 자료를 활용할 수 있습니다. 이제 효과적으로 피난민을 사냥하는 두 개의 죽은 삼신 작전이 있게 됩니다: 하나는 성벽 안, 하나는 성벽 밖. (두 작전 모두 아마 여전히 암릭과 연결되어 있을 것입니다.)</p>
+<p>(햄혹스 도살장에 쓰지 못한 멋진 단서도 있었습니다: 피해자 옷에 묻은 파란 피. 발더스 게이트에서 거대 거미를 도살하는 곳은 햄혹스 도살장뿐입니다.)</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="hooks">훅(Hooks)</h2>
+
+<p>시나리오를 이해하면, PC들이 어떻게 관여할 수 있는지 살펴볼 수 있습니다. 우리는 플롯을 준비하는 게 아니므로, 이론적으로는 우리가 디자인한 어떤 노드든 가리키는 시나리오 훅을 아주 많이 만들 수 있습니다. 하지만 실제로는, 이 시점에서 PC들이 시나리오와 어떻게 상호작용하는지를 구조적으로 생각하기 시작합니다. 음모의 경우, 이것은 보통 음모의 주변부 어딘가를 가리키는 훅으로 번역됩니다(PC들이 중심부를 향해 나아가면서 음모에 대해 점점 더 많이 알게 되도록).</p>
+
+<p>이 경우, 우리의 작은 순서도는 완벽한 루프입니다: 주변부는 어디일까요? 죽은 삼신의 던전이 음모의 통제 허브라는 걸 알고 있습니다. 그리고 구조적으로, 캠페인의 다음 구간(반탐푸르 저택)으로의 주요 단서들이 발견되는 곳이기도 합니다. 따라서 죽은 삼신의 던전에서 가장 먼 지점을 볼 수 있습니다: 바로 <strong>피난민</strong>입니다.</p>
+
+<p>이렇게 결정하면, 명확한 구조가 눈에 들어옵니다: 살해된 피난민으로부터 PC들은 어느 방향으로든(또는 양쪽 모두) 사다리를 타고 올라갈 수 있습니다.</p>
+
+<p>훅의 형태와 훅의 내용이 별개라는 점도 기억하면 유용합니다. 예를 들어, 출판된 모험에서 화염 조지는 PC들에게 타리나에게 말하라고 하고, 타리나가 죽은 삼신의 던전으로 가라고 합니다. 하지만 조지는 마찬가지로 쉽게 포이즌드 포세이돈에 가라거나, 죽은 피난민을 수사하라거나, 암릭을 심문하라거나, 심지어 바로 반탐푸르 저택으로 가라고 할 수도 있습니다.</p>
+
+<p>그러니까 훅이 가리키는 곳을 바꾸더라도, 훅의 기본 구조를 포기할 필요는 없습니다.</p>
+
+<h3 id="zodge-briefing">조지의 브리핑(Zodge's Briefing)</h3>
+
+<p>조지는 실제로 PC들에게 두 가지 방향을 제시합니다. 파트 1에서 설명한 대로, 그는 PC들과 살인 사건을 수사하기로 거래를 합니다:</p>
+
+<ul>
+<li>도시가 혼란에 빠져 있습니다. 대공작 울더 레이븐가드(Grand Duke Ulder Ravengard)가 실종되었으며, 엘투렐 함락 시 사망한 것으로 추정됩니다. (그가 들은 엘투렐의 소문 몇 가지를 언급할 수 있습니다.)</li>
+<li>어떤 사람들은 엘투리아인들을 탓하고, 다른 사람들은 피난민이 비밀 의제를 갖고 있다고 생각합니다. 긴장이 높고, 폭력이 도처에 만연하며, 화염 주먹단은 도시가 무너지지 않게 막느라 인력이 부족합니다.</li>
+<li>누군가가 피난민을 살해하고 있습니다. 조지는 조직적인 노력이라고 생각하지만, 화염 주먹단에는 제대로 된 수사나 대응을 할 인력이 없습니다.</li>
+<li>PC들이 살인 사건을 수사하고 범인을 법의 심판대에 세우는 데 동의하면, 그는 즉시 그들의 캐러밴 피난민을 도시 안으로 들여보내줄 것입니다.</li>
+<li>그 이후로 피난민들은 알아서 해야 합니다: 할 수 있는 대로 알아서 준비해야 합니다. (하지만 밖의 피난민 야영지보다는 분명 나을 것입니다. 밖은 날마다 상황이 더 절박해지고 있으니까요.)</li>
+</ul>
+
+<div class="sidebar">
+<h3>참고</h3>
+<p>PC들이 피난민들과 함께 발더스 게이트에 매우 빨리 도착한다면, 조지가 그들을 찾아오기(또는 그 반대) 전에 피난민들이 야영지에서 하루 이틀을 보내게 할 수 있습니다. 살인이 시작될 시간을 벌어주는 것이죠.</p>
+</div>
+
+<p>PC들이 거래에 동의하면(또는 그냥 질문만 해도), 조지가 전체 브리핑을 해줍니다:</p>
+
+<ul>
+<li>클리프게이트(Cliffgate) 남쪽 브램프턴(Brampton) 동네에 위치한 <strong>인사이트 공원(Insight Park)</strong>에 반 다스의 시체가 유기되었습니다.</li>
+<li>시체에는 <strong>죽은 삼신</strong> — 베인(Bane), 바알(Bhaal), 미르쿨(Myrkul) 신 — 과 관련된 의식 상징이 새겨져 있습니다. 조지는 실제로 죽은 삼신의 추종자인지, 아니면 누군가가 그들을 희생양으로 쓰고 있는 것인지 확신하지 못합니다.</li>
+<li>PC들은 대리인 자격으로 범인을 현장에서 사살할 권한이 부여됩니다.</li>
+<li>화염 주먹단 정보원인 <strong>타리나(Tarina)</strong>가 조지에게 살인에 대한 단서가 있다고 전갈을 보냈습니다. PC들은 오늘 밤 <strong>엘프송 선술집(Elfsong Tavern)</strong>에서 만나, 그녀가 아는 것을 알아내고, 그녀가 가진 단서를 추적해야 합니다.</li>
+<li>조지가 타리나에게 정보 대가로 지불할 50gp 주머니를 줍니다.</li>
+<li>진행 상황을 계속 보고해야 합니다.</li>
+</ul>
+
+<p>이 브리핑은 실제로 PC들에게 두 가지 단서를 줍니다: 아마 타리나를 만나러 갈 가능성이 높지만, 독자적으로 살인 사건을 수사하기로 결정할 수도 있습니다.</p>
+
+<h3 id="tarina-lead">타리나의 단서(Tarina's Lead)</h3>
+
+<p>타리나가 엘프송 선술집에서 PC들에게 주는 단서는 간단합니다: 브램프턴 부두의 <strong>포이즌드 포세이돈</strong> 주변에서 죽은 삼신 광신도들을 봤다는 것입니다.</p>
+
+<h3 id="investigating-murders">살인 사건 수사(Investigating the Murders)</h3>
+
+<p>PC들이 직접 살인 사건을 수사하기로 결정하면, 여러 가지 선택지가 있습니다. 이것은 파트 3D에서 논의합니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="leads">단서 — 시나리오 풀기(Leads — The Scenario Solve)</h2>
+
+<p><em>고급 노드 기반 디자인(Advanced Node-Based Design)</em>에서 미스터리 시나리오의 두 갈래에 대해 이야기한 적 있습니다: 실제로 무슨 일이 일어나고 있는지에 대한 근본적 진실이나 폭로를 파악하는 데 필요한 단서(컨셉 풀기)와, 더 많은 단서를 찾기 위해 어디를 봐야 하는지 알려주는 단서 또는 단서들(다른 장소나 캐릭터나 사건; 시나리오 풀기)이 있습니다.</p>
+
+<p><strong>컨셉 풀기</strong>는 여러분이 파악하려는 답이고, <strong>시나리오 풀기</strong>는 실제로 하는 행동입니다.</p>
+
+<p>시나리오 풀기의 폭로 목록은 일반적으로 노드 목록과 동일(또는 거의 동일)합니다. 반탐푸르 수사의 경우, 시나리오 풀기 폭로는 다섯 가지입니다:</p>
+
+<ol>
+<li>포이즌드 포세이돈(Poisoned Poseidon)</li>
+<li>암릭 반탐푸르(Amrik Vanthampur)</li>
+<li>죽은 삼신의 던전(Dungeon of the Dead Three)</li>
+<li>반탐푸르 저택(Vanthampur Manor)</li>
+<li>지옥 퍼즐상자(Infernal Puzzlebox)</li>
+</ol>
+
+<p>(지옥 퍼즐상자는 파트 4: 캔들킵(Candlekeep)으로의 구조적 연결고리이므로 시나리오 풀기에 해당합니다.)</p>
+
+<p>이 폭로 목록을 더 자세히 살펴봅시다. 이것이 폭로 목록이므로, 각 노드를 <em>가리키는</em> 단서들을 열거합니다. 해당 노드에서 <em>발견되는</em> 단서가 아닙니다. 각 단서의 위치는 괄호 안에 표시됩니다. (보통은 폭로 목록에 각 단서의 설명을 넣지 않지만, 디자인 과정을 명확히 하기 위해 여기서는 그렇게 합니다.)</p>
+
+<h3 id="lead-poseidon">포이즌드 포세이돈(The Poisoned Poseidon)</h3>
+
+<ul>
+<li><strong>타리나의 단서.</strong> 타리나가 PC들에게 포이즌드 포세이돈을 확인해 보라고 합니다.</li>
+<li><strong>무두질액(살인 사건 수사).</strong> 피해자 중 한 명의 옷에 가죽의 털을 삭혀 풀어내는 데 쓰는 연금술 용액인 목재 회분과 석회의 알칼리 용액이 묻어 있습니다. (가장 가까운 무두질 공장이 포이즌드 포세이돈입니다.)</li>
+<li><strong>살인 현장 잠복(살인 사건 수사).</strong> 다음 시체가 유기될 때, PC들은 살인자들을 포이즌드 포세이돈까지 미행하거나 심문할 수 있습니다.</li>
+<li><strong>암릭의 서류(암릭 밀매).</strong> 포세이돈에서 온 서신과 족보 보고서의 주석. 암릭을 심문해도 같은 내용을 얻을 수 있습니다.</li>
+</ul>
+
+<h3 id="lead-amrik">암릭 반탐푸르(Amrik Vanthampur)</h3>
+
+<ul>
+<li><strong>피난민 서류(살인 사건 수사).</strong> 살인 현장과 시체보관소의 시체에서 발견된 위조 피난민 서류를 암릭까지 추적할 수 있습니다.</li>
+<li><strong>피해자 탐문(살인 사건 수사).</strong> 피해자를 알던 사람들이 그들이 암릭을 통해 도시로 밀입국했다고 증언할 수 있습니다.</li>
+<li><strong>모트록 심문(죽은 삼신의 던전).</strong></li>
+<li><strong>암살자의 지시(죽은 삼신의 던전).</strong> 모트록을 표적으로 한 암살자가 암릭의 지시가 담긴 쪽지를 갖고 있습니다. 암살자를 심문해도 비슷한 내용을 얻을 수 있습니다.</li>
+</ul>
+
+<h3 id="lead-dungeon">죽은 삼신의 던전(Dungeon of the Dead Three)</h3>
+
+<ul>
+<li><strong>살인자 심문(살인 사건 수사).</strong> PC들이 인사이트 공원을 잠복하면, 시체를 유기하는 광신도들을 심문할 수 있습니다.</li>
+<li><strong>포세이돈 서신(포이즌드 포세이돈).</strong> 죽은 삼신 지도부의 보고서에 목욕탕이 언급됩니다.</li>
+<li><strong>포세이돈 광신도(포이즌드 포세이돈).</strong> 포세이돈 광신도를 미행하거나 심문하면 목욕탕으로 이어질 수 있습니다.</li>
+<li><strong>암릭의 서류(암릭 밀매).</strong> 암릭은 죽은 삼신 지도부에 보고서를 보내고 지시를 받고 있습니다. 심문으로도 비슷한 내용을 얻을 수 있습니다.</li>
+</ul>
+
+<h3 id="lead-manor">반탐푸르 저택(Vanthampur Manor)</h3>
+
+<ul>
+<li><strong>반탐푸르 아들들(암릭 밀매/죽은 삼신의 던전).</strong> 반탐푸르 후계자 중 한 명 이상이 관여한다는 사실을 아는 것만으로도 반탐푸르 저택 수사가 촉발될 수 있습니다.</li>
+<li><strong>암릭의 서류(암릭 밀매).</strong> 암릭에게는 형 서스트웰(Thurstwell)과의 서신이 있습니다.</li>
+<li><strong>모트록의 서신(죽은 삼신의 던전).</strong> 어머니로부터 온 편지로, 목욕탕 아래 지하실에 접근하는 방법이 적혀 있습니다. 모트록을 심문해도 비슷한 내용을 얻을 수 있습니다.</li>
+<li><strong>숨겨진 군주의 밀서(죽은 삼신의 던전).</strong> 타비우스 크리그의 서신으로, 가르가우스의 지시를 죽은 삼신 지도자들에게 전달하면서 (의도치 않게 반탐푸르 저택에 가르가우스가 있다는 사실을 드러냅니다).</li>
+</ul>
+
+<h3 id="lead-puzzlebox">지옥 퍼즐상자(Infernal Puzzlebox)</h3>
+
+<ul>
+<li><strong>암릭의 서류(암릭 밀매).</strong> 암릭과 형 서스트웰의 서신에 지옥 퍼즐상자가 언급됩니다(서스트웰이 보관 금고에서 꺼냈는데, 상자에 매료되었기 때문입니다).</li>
+<li><strong>숨겨진 군주의 밀서(죽은 삼신의 던전).</strong> 밀서에도 퍼즐상자가 언급됩니다.</li>
+<li><strong>모트록 심문(죽은 삼신의 던전).</strong> 모트록은 강력한 교단 지도자가 엘투렐 함락 직전에 탈출하여 어머니가 반탐푸르 저택 지하에서 보호하고 있다는 걸 알고 있습니다. 그 교단 지도자는 두 가지 강력한 유물을 가져왔는데, 그 중 하나는 상자에 잠겨 있었습니다(아니면 상자 자체가 유물인가? 모트록도 확실치 않습니다).</li>
+<li><strong>상자 발견(반탐푸르 저택).</strong> 오. 이런! 여기 있었네!</li>
+</ul>
+
+<p>(이 폭로 목록이 어떻게 디자인되었는지 궁금하다면: 말 그대로 다섯 가지 폭로를 나열한 다음, 게임 세계의 논리와 양방향으로 "사다리를 타고 올라갈 수 있다"는 의도를 따라 각각에 단서를 추가했습니다.)</p>
+
+<!-- ============================================================ -->
+<h2 id="concept-solve">컨셉 풀기(Concept Solve)</h2>
+
+<p>이전에 논의했듯이, 반탐푸르 수사 동안 PC들이 파악해야 하지만 진행에 <em>실제로 필수적이지는 않은</em> 몇 가지 핵심 개념이 있습니다:</p>
+
+<ul>
+<li>살인 피해자들은 엘투가드(Elturgard) 기사들의 후손입니다(지옥기수단 또는 동반자 기사단).</li>
+<li>숨겨진 군주의 방패(Shield of the Hidden Lord)가 반탐푸르 저택에 숨겨져 있습니다. (이상적으로는, PC들이 방패를 찾아 가져가는 결과로 이어집니다.)</li>
+<li>타비우스 크리그(Thavius Kreeg)는 광신도입니다.</li>
+<li>엘투렐은 악마에 의해 파괴되었습니다.</li>
+</ul>
+
+<h3 id="victims-knights">엘투가드 기사단의 후손인 피해자들(Victims Descended from Knights of Elturgard)</h3>
+
+<ul>
+<li><strong>피해자 탐문(살인 사건 수사).</strong> 피해자를 알던 사람들과 대화하면, 그들이 기사였거나 기사와 관련이 있다는 사실이 공통 주제로 나타날 것입니다. 주목할 만한 피해자 한 명은 피난민이 <em>아닙니다</em>. 그의 집에는 지옥기수단의 외투가 걸려 있습니다(아버지의 것).</li>
+<li><strong>암릭의 서류(암릭 밀매).</strong> 그의 서류에는 교차 참조하고 있는 족보 기록이 포함되어 있습니다.</li>
+<li><strong>숨겨진 군주의 밀서(죽은 삼신의 던전).</strong> 밀서에는 죽은 삼신 광신도들이 "엘투가드의 성스러운 기사단의 피를 찾아야 한다"는 내용이 드러납니다.</li>
+<li><strong>서스트웰의 서신(반탐푸르 저택).</strong> 암릭이 서스트웰의 조사 지원에 관해 문의한 내용이 포함되어 있습니다.</li>
+</ul>
+
+<h3 id="gargauth-shield">가르가우스 / 숨겨진 군주의 방패(Gargauth / Shield of the Hidden Lord)</h3>
+
+<ul>
+<li><strong>광신도 심문(죽은 삼신의 던전).</strong> 그들은 가르가우스의 역사를 알고 있으며, 반탐푸르 가문이 숨겨진 군주의 방패를 보유하고 있다는 것도 알고 있습니다.</li>
+<li><strong>숨겨진 군주의 밀서(죽은 삼신의 던전).</strong> 이름이 모든 걸 말해줍니다.</li>
+<li><strong>모트록 심문(죽은 삼신의 던전).</strong> 모트록은 강력한 교단 지도자가 엘투렐 함락 직전에 탈출하여 어머니가 반탐푸르 저택 지하에서 보호하고 있다는 걸 알고 있습니다. 그 교단 지도자는 두 가지 강력한 유물을 가져왔는데, 그 중 하나는 악마의 얼굴을 본뜬 방패였습니다.</li>
+<li><strong>방패 발견.</strong> 오. 이런! 여기 있었네!</li>
+</ul>
+
+<h3 id="kreeg-cultist">크리그는 광신도(Kreeg's a Cultist)</h3>
+
+<p>(이 단서들 대부분은 좀 더 간접적입니다. PC들이 크리그가 광신도라는 것을 알아채지 <em>못하고</em>, 대신 반탐푸르 가문으로부터 그를 "구출"하는 것도 충분히 가능합니다.)</p>
+
+<ul>
+<li><strong>암릭의 서류(암릭 밀매).</strong> 암릭이 사용하는 족보 기록은 엘투렐에 있던 타비우스 크리그의 사무실에서 온 것입니다.</li>
+<li><strong>숨겨진 군주의 밀서(죽은 삼신의 던전).</strong> 이것들은 이니셜 "TK"로 서명되어 있습니다.</li>
+<li><strong>모트록 심문(죽은 삼신의 던전).</strong> 모트록은 강력한 교단 지도자가 엘투렐 함락 직전에 탈출하여 어머니가 반탐푸르 저택 지하에서 보호하고 있다는 걸 알고 있습니다.</li>
+<li><strong>크리그 조우(반탐푸르 저택).</strong> 어... 안녕하세요. 만나서 반갑습니다. 여기서 뭐 하고 계신 건가요?</li>
+</ul>
+
+<h3 id="elturel-devils">엘투렐은 악마들에 의해 파괴되었다(Elturel Was Destroyed by Devils)</h3>
+
+<ul>
+<li><strong>엘투렐의 소문.</strong></li>
+<li><strong>제단의 예언/찬양(죽은 삼신의 던전).</strong> 죽은 삼신의 예배당에서 엘투렐 함락에 대한 이야기와 예언을 찾을 수 있습니다.</li>
+<li><strong>가르가우스, 크리그, 또는 반탐푸르 공작 심문(반탐푸르 저택).</strong> 이 세 NPC 모두 진실(엘투렐이 지옥으로 끌려갔다는 것)을 알고 있습니다. 세 명 모두 빗겨 거짓말을 하며, 엘투렐의 "멸망"을 언급하고 — 압박을 받으면! — 자리엘의 군단이 "도시를 덮쳤다"(그리고 비슷한 완곡 표현)고 말합니다.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="portyr-politics">포르티르 정치(Portyr Politics)</h2>
+
+<p>마지막으로 여기에 겹겹이 추가하고 싶은 것은 발더스 게이트의 현재 사건의 더 넓은 영향입니다: 피난민 위기 자체에 더해, 블레이즈 리아라 포르티르(Blaze Liara Portyr)의 부상하는 공작 정치 — 대공작 레이븐가드의 명백한 사망으로 생긴 권력 공백이 어떻게 해결될 것인가 — 는 정말 흥미로울 뿐만 아니라, 반탐푸르 공작의 음모와도 직접적으로 관련이 있습니다.</p>
+
+<p>캠페인이 시작될 때, 대공작 자리, 비어 있는 공작 의석, <strong>그리고</strong> 화염 주먹단 원수 자리가 모두 경합 중입니다. 이것들이 같은 사람에게 갈 수도 있고, 세 명의 다른 사람에게 갈 수도 있습니다. 그리고 어드벤처러스 리그 시나리오에서는 포르티르 공작이 조카를 화염 주먹단 원수가 될 수 있는 위치에 올려놓은 직후에 암살당합니다.</p>
+
+<p>그녀가 그 자리를 공고히 할 수 있을까요? 아니면 포르티르 가문의 전체 권력 기반이 무너질까요?</p>
+
+<p>어떻게 이것을 캠페인에 가져올 수 있을까요? PC들(과 플레이어들)에게 무슨 일이 벌어지고 있는지 볼 수 있는 창을 어떻게 줄 수 있을까요?</p>
+
+<p>우리의 메커니즘은 <strong>조지</strong>입니다. 조지와의 잠재적 상호작용이 다섯 번 있고(고용될 때 한 번, 그리고 반탐푸르 수사의 네 노드 각각 이후 보고할 때 한 번씩), 이렇게 활용할 것입니다:</p>
+
+<h3>첫 번째 상호작용</h3>
+<p>조지가 그들을 고용합니다.</p>
+
+<h3>두 번째 상호작용</h3>
+<p>블레이즈 포르티르(Blaze Portyr)가 발더스 게이트에 도착했습니다. 아마 가장 극적인 연출은 PC들이 조지에게 보고하는 도중에 그녀가 사무실로 들이닥치는 것이지만, PC들이 도착했을 때 이미 조지와 전략을 논의하고 있는 상태일 수도 있습니다.</p>
+
+<p>파트 2B의 "대화 주제"를 보고 원수 후보에 대한 소문 중 어디까지가 사실인지 결정하세요. (전부 사실일 수도, 전부 거짓일 수도, 그 사이 아무 것이나 될 수 있습니다.) 포르티르의 현재 목표는 자신의 원수 선출을 위해 화염(조지 같은)들의 충성을 확보하는 것입니다.</p>
+
+<p>이 장면에서 블레이즈 포르티르가 포르티르 공작의 조카라는 사실을 확립하는 것이 중요합니다. 조지가 "삼촌이 지지하시는 거죠? 딜라드 공작의 정치적 후원이 상도시에서 차이를 만들 겁니다." 같은 말을 하게 할 수 있습니다. (뭐든 효과가 있는 걸로요.)</p>
+
+<div class="sidebar">
+<h3>팁</h3>
+<p>어느 쪽이든, 조지는 PC들의 수사에 대해 포르티르에게 브리핑할 시간이 없었을 것입니다. 포르티르가 무슨 일인지 알고 싶어하면, 조지 대신 PC들에게 물어보게 하세요. 플레이어들이 직접 브리핑하게 하면: 그들이 상호작용의 능동적 주인공이 될 뿐만 아니라, 자신들이 알고 있는 것과 목표가 무엇인지를 유기적으로 스스로 상기하는 좋은 방법이 됩니다.</p>
+</div>
+
+<p>플레이어들이 그녀를 좋아하게 만들고 싶다면, 피난민을 위한 정의를 추구하는 조지의 이니셔티브를 열정적으로 지지하게 하세요.</p>
+
+<h3>세 번째 상호작용</h3>
+<p>이 상호작용은 선택적이거나, PC들이 노드를 방문하는 순서와 각 노드 후에 보고하는지 여부에 따라 네 번째 상호작용 후에 일어날 수도 있습니다. 포르티르와 조지가 여전히 함께 계획을 세우고 있습니다.</p>
+
+<ul>
+<li>그녀가 스스로를 원수로 선언했습니다.</li>
+<li>화염 조지가 블레이즈로 승진했습니다.</li>
+<li>두 번째 상호작용에서 확립한 경쟁자 중 하나가 제거되었습니다. (예를 들어, 블레이즈 벨드로스(Blaze Beldroth)가 체포되었거나, 웜즈 록(Wyrm's Rock)의 블레이즈 무카르(Blaze Mukar)가 포르티르에게 충성을 맹세했거나, 포르티르의 삼촌이 엘탄(Eltan) 가문의 화염 주먹단 지분을 되사 그들의 지지를 얻었습니다.) "경쟁자 다수" 옵션으로 진행하더라도, 여기서는 하나만 해결되게 하세요. (진행 중인 프로젝트이지 완결이 아닙니다.)</li>
+</ul>
+
+<h3>네 번째 상호작용</h3>
+<p>파트 3F: 죽은 삼신의 던전 끝에서, 반탐푸르 공작이 죽은 삼신 광신도들에게 포르티르 공작을 암살하라고 명령했다는 것이 밝혀집니다. PC들은 포르티르 공작이 표적이 된 정치 집회로 달려가지만, 거의 확실히 너무 늦었습니다.</p>
+
+<p>원수 포르티르(Marshal Portyr)가 삼촌의 죽음에 반탐푸르 공작이 책임이 있다는 걸 알게 되면, PC들에게 반탐푸르 가문을 쓸어버리라고 요청합니다. 정치적 이유로 PC들의 관여는 부인될 것입니다. 하지만 성공하면, 화염 주먹단 내 승진이든 큰 현금 보상이든 (그들에게 더 매력적인 쪽으로) 제안하겠다고 합니다.</p>
+
+<div class="sidebar">
+<h3>참고</h3>
+<p>비교적 사소한 점이지만, 출판된 모험에서 PC들이 네 공작 중 한 명을 살해한다고 가정하는데 화염 주먹단의 반응이 집단적 어깨 으쓱이라는 건 좀 이상합니다. 여기서 우리는 그 행동을 도시의 전반적 정치 위기(엘투렐의 실종과 대공작의 상실에서 직접 흘러나온 모든 것) 안에서 맥락화하고, PC들에게 반탐푸르 저택으로 향하는 명확한 목표도 부여합니다.</p>
+</div>
+
+<h3>다섯 번째 상호작용</h3>
+<p>PC들이 반탐푸르 공작을 처치한 후, 원수 포르티르는 반탐푸르의 죽음으로 인한 정치적 복잡한 상황이 정리될 때까지 잠시 발더스 게이트를 떠나 있도록 제안/격려/지원합니다. (이에 대한 자세한 내용은 파트 4: 캔들킵에서.)</p>
+
+<div class="sidebar">
+<h3>디자인 노트</h3>
+<p>PC들이 지옥에서 돌아와서 아마도 완전히 멀쩡하게 살아있는 대공작 레이븐가드를 발더스 게이트에 데려왔는데, 자기 자리가 "대체"되어 있다는 걸 발견하면... 글쎄요, 그때가 정치가 <em>정말로</em> 재밌어지는 순간입니다.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="alternative-hook">대안 훅(Alternative Hook)</h2>
+
+<p>파트 2B에서 PC들이 화염 조지를 우회하는 방법을 알아내고, 자기 피난민 중 한 명의 살해를 이용해 파트 3D: 살인 사건 수사로 끌려들어가는 것을 캠페인의 대안 훅으로 사용할 가능성을 언급했습니다.</p>
+
+<p>이 대안 훅을 사용하면, 포르티르 정치를 놓치게 되는 걸까요?</p>
+
+<p>반드시 그런 건 아닙니다.</p>
+
+<p>첫째, PC들이 조지를 완전히 피했다면, 그들이 탐색한 첫 번째 또는 두 번째 노드 후에 그가 수사 소식을 듣게 될 수 있습니다. 그는 직접 접근하거나, 타리나를 통해(PC들을 가장 잘 식별했을 사람) 그들이 뭘 하고 있는지 알아내려 할 수 있습니다(그리고 잠재적으로 공식 자격으로 합류시키려 할 수 있습니다).</p>
+
+<p>둘째, PC들이 조지의 제안을 거절했더라도, 삼촌이 암살당한 후에 원수 포르티르를 만나게 될 가능성이 높습니다. 그녀는 그들의 수사에서 지금까지 무엇이 밝혀졌는지 알고 싶어할 것이고, 결과적으로 생기는 장면에 화염 주먹단 장악을 위한 현재 계획의 세부 사항 몇 가지를 엮어넣을 수 있을 것입니다.</p>
+
+<p>이 모든 것이 실패하더라도, 이러한 사건들은 발더스 게이트에 생명을 불어넣는 훌륭한 배경 사건으로 기능할 것입니다.</p>
+
+<!-- Bottom Nav -->
+<div class="section-divider">* * *</div>
+
+<nav class="chapter-nav">
+  <a href="DIA-home.html" class="nav-home" title="홈">⌂</a>
+  <a href="DIA-remix-part3B.html" class="nav-btn" title="파트 3B">◀ 이전</a>
+  <span class="nav-title">리믹스 파트 3C: 반탐푸르의 진실</span>
+  <a href="DIA-remix-part3D.html" class="nav-btn" title="파트 3D">다음 ▶</a>
+</nav>
+
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+document.addEventListener('click', function(e) {
+  var img = e.target;
+  if (img.tagName === 'IMG' && img.closest('.illustration')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  if (img.tagName === 'IMG' && img.closest('.map-container')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
