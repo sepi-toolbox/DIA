@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>발더스 게이트 인터랙티브 지도</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+  --bg: #faf6f0;
+  --text: #2c2416;
+  --accent: #8b1a1a;
+  --border: #c9b99a;
+  --box-bg: #f0e8d8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.6em;
+  color: #4a0e0e;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #a0522d;
+  font-size: 0.9em;
+  margin-bottom: 16px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 0.9em;
+  color: #a0522d;
+  text-decoration: none;
+}
+.back-link:hover { color: var(--accent); }
+
+.map-wrap {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.map-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.zone {
+  position: absolute;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zone:hover {
+  border-color: rgba(255,255,255,0.8);
+  background: rgba(139,26,26,0.3);
+  box-shadow: 0 0 16px rgba(139,26,26,0.5);
+}
+
+.zone .zone-label {
+  display: none;
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30,20,10,0.92);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  pointer-events: none;
+  font-weight: 700;
+  z-index: 10;
+}
+
+.zone:hover .zone-label { display: block; }
+
+.legend {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.legend a {
+  display: block;
+  padding: 8px 12px;
+  background: var(--box-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.legend a:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.legend-section {
+  grid-column: 1 / -1;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  h1 { font-size: 1.2em; }
+  .zone .zone-label { font-size: 11px; padding: 4px 8px; }
+}
+</style>
+</head>
+<body>
+
+<a href="DIA-home.html" class="back-link">← DIA 홈으로</a>
+
+<h1>발더스 게이트 인터랙티브 지도</h1>
+<p class="subtitle">지역을 클릭하면 해당 지명사전으로 이동합니다</p>
+
+<div class="map-wrap">
+  <img src="bg-neighborhoods-map.webp" alt="발더스 게이트 지역 지도">
+
+  <!-- Upper City zones -->
+  <a href="DIA-bg-gazetteer.html#bg-landmarks" class="zone" style="left:18%;top:22%;width:14%;height:18%;">
+    <span class="zone-label">시타델 거리 (Citadel Streets)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-patriars" class="zone" style="left:24%;top:18%;width:12%;height:14%;">
+    <span class="zone-label">마노르본 (Manorborn)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-religion" class="zone" style="left:30%;top:28%;width:10%;height:12%;">
+    <span class="zone-label">신전 구역 (Temples)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-economy" class="zone" style="left:35%;top:34%;width:10%;height:10%;">
+    <span class="zone-label">더 와이드 (The Wide)</span>
+  </a>
+
+  <!-- Lower City zones -->
+  <a href="DIA-bg-gazetteer.html#bg-crews" class="zone" style="left:10%;top:42%;width:12%;height:16%;">
+    <span class="zone-label">스팁스 (The Steeps)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-flaming-fist" class="zone" style="left:22%;top:40%;width:10%;height:12%;">
+    <span class="zone-label">이스트웨이 (Eastway)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-gray-harbor" class="zone" style="left:32%;top:42%;width:12%;height:14%;">
+    <span class="zone-label">하이드 항 (Heapside)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-gates" class="zone" style="left:44%;top:38%;width:10%;height:12%;">
+    <span class="zone-label">브램프턴 (Brampton)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-murder" class="zone" style="left:37%;top:28%;width:8%;height:10%;">
+    <span class="zone-label">블룸리지 (Bloomridge)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-dusthawk" class="zone" style="left:55%;top:28%;width:14%;height:16%;">
+    <span class="zone-label">더스트호크 언덕 (Dusthawk Hill)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-guild" class="zone" style="left:52%;top:44%;width:10%;height:14%;">
+    <span class="zone-label">시타워 (Seatower)</span>
+  </a>
+
+  <!-- Outer City zones -->
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:4%;top:6%;width:12%;height:14%;">
+    <span class="zone-label">블랙게이트 (Blackgate)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:6%;top:26%;width:8%;height:16%;">
+    <span class="zone-label">스토니아이즈 (Stonyeyes)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:38%;top:8%;width:14%;height:12%;">
+    <span class="zone-label">리틀 칼림샨 (Little Calimshan)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:53%;top:8%;width:10%;height:12%;">
+    <span class="zone-label">휘트킵 (Whitkeep)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:14%;top:8%;width:12%;height:10%;">
+    <span class="zone-label">노르채플 (Norchapel)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:70%;top:20%;width:10%;height:16%;">
+    <span class="zone-label">트윈 송즈 (Twin Songs)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:73%;top:60%;width:14%;height:16%;">
+    <span class="zone-label">리빙턴 (Rivington)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:80%;top:75%;width:16%;height:16%;">
+    <span class="zone-label">텀블다운 (Tumbledown)</span>
+  </a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry" class="zone" style="left:68%;top:80%;width:12%;height:10%;">
+    <span class="zone-label">웜즈 횡단 (Wyrm's Crossing)</span>
+  </a>
+</div>
+
+<div class="legend">
+  <div class="legend-section">📍 상부 도시 (Upper City)</div>
+  <a href="DIA-bg-gazetteer.html#bg-landmarks">시타델 거리</a>
+  <a href="DIA-bg-gazetteer.html#bg-patriars">마노르본 (패트리아르 저택)</a>
+  <a href="DIA-bg-gazetteer.html#bg-religion">신전 구역</a>
+  <a href="DIA-bg-gazetteer.html#bg-economy">더 와이드 (광장)</a>
+  <a href="DIA-bg-gazetteer.html#bg-watch">경비대 시타델</a>
+  <a href="DIA-bg-gazetteer.html#bg-government">하이 홀</a>
+
+  <div class="legend-section">📍 하부 도시 (Lower City)</div>
+  <a href="DIA-bg-gazetteer.html#bg-crews">스팁스 / 크루 영역</a>
+  <a href="DIA-bg-gazetteer.html#bg-flaming-fist">이스트웨이</a>
+  <a href="DIA-bg-gazetteer.html#bg-gray-harbor">그레이 항구 / 힙사이드</a>
+  <a href="DIA-bg-gazetteer.html#bg-gates">브램프턴 / 성문</a>
+  <a href="DIA-bg-gazetteer.html#bg-murder">블룸리지</a>
+  <a href="DIA-bg-gazetteer.html#bg-dusthawk">더스트호크 언덕</a>
+  <a href="DIA-bg-gazetteer.html#bg-guild">시타워 / 길드</a>
+
+  <div class="legend-section">📍 외곽 도시 (Outer City)</div>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">블랙게이트</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">스토니아이즈</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">노르채플</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">리틀 칼림샨</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">휘트킵</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">트윈 송즈</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">리빙턴</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">텀블다운</a>
+  <a href="DIA-bg-gazetteer.html#bg-citizenry">웜즈 횡단</a>
+
+  <div class="legend-section">📖 주요 시스템</div>
+  <a href="DIA-bg-gazetteer.html#bg-government">정부 / 4인 의회</a>
+  <a href="DIA-bg-gazetteer.html#bg-flaming-fist">화염 주먹단</a>
+  <a href="DIA-bg-gazetteer.html#bg-watch">경비대</a>
+  <a href="DIA-bg-gazetteer.html#bg-guild">길드 (범죄 조직)</a>
+  <a href="DIA-bg-gazetteer.html#bg-dead-three-danger">죽은 삼신</a>
+  <a href="DIA-bg-gazetteer.html#bg-religion">종교</a>
+</div>
+
+</body>
+</html>
