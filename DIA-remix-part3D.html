@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리믹스 파트 3D: 살인 사건 수사 — Investigating the Murders</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  ul, ol { margin: 0 0 14px 24px; }
+  li { margin-bottom: 6px; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  strong { color: var(--heading); }
+
+  /* Compact Chapter Nav */
+  .chapter-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 24px;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding: 8px 0;
+    gap: 8px;
+  }
+  .chapter-nav .nav-btn {
+    padding: 8px 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    min-width: 80px;
+    text-align: center;
+  }
+  .chapter-nav .nav-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .chapter-nav .nav-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .chapter-nav .nav-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chapter-nav .nav-home {
+    padding: 8px 12px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .chapter-nav .nav-home:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  .illustration {
+    margin: 24px 0;
+    text-align: center;
+  }
+  .illustration img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 12px var(--shadow);
+  }
+  .illustration .caption {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+    color: var(--accent2);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Lightbox */
+  .illustration img { cursor: zoom-in; }
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    font-family: sans-serif;
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="DIA-home.html" class="nav-home" title="홈">&#8962;</a>
+  <a href="DIA-remix-part3C.html" class="nav-btn" title="파트 3C">&#9664; 파트 3C</a>
+  <span class="nav-title">파트 3D: 살인 사건 수사</span>
+  <a href="DIA-remix-part3E.html" class="nav-btn" title="파트 3E">파트 3E &#9654;</a>
+</nav>
+
+<h1>
+  살인 사건 수사
+  <span class="subtitle">Investigating the Murders</span>
+</h1>
+
+<!-- Sidebar TOC -->
+<button class="sidebar-toc-toggle" id="tocToggle" onclick="document.getElementById('sidebarToc').classList.toggle('open'); this.classList.toggle('open');">목차</button>
+<aside class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="document.getElementById('sidebarToc').classList.remove('open'); document.getElementById('tocToggle').classList.remove('open');">&#10005;</button>
+  <h4>파트 3D 목차</h4>
+  <ul>
+    <li class="toc-h2"><a href="#victims">피해자들</a></li>
+    <li class="toc-h3"><a href="#additional-victims">추가 피해자</a></li>
+    <li class="toc-h2"><a href="#insight-park">인사이트 공원</a></li>
+    <li class="toc-h3"><a href="#timeline">타임라인</a></li>
+    <li class="toc-h3"><a href="#torimesh">드루이드 토리메시</a></li>
+    <li class="toc-h3"><a href="#drawing-tree">드로잉 트리</a></li>
+    <li class="toc-h3"><a href="#searching-park">공원 수색</a></li>
+    <li class="toc-h4"><a href="#clue-tanner">단서 1: 무두질 용액</a></li>
+    <li class="toc-h4"><a href="#clue-papers">단서 2: 피난민 서류</a></li>
+    <li class="toc-h3"><a href="#stakeout">공원 잠복</a></li>
+    <li class="toc-h2"><a href="#candulhallow">캔덜할로의 시체안치소</a></li>
+    <li class="toc-h3"><a href="#ritual-carvings">의식 문양</a></li>
+    <li class="toc-h3"><a href="#mort-tanner">무두질 용액 (시체안치소)</a></li>
+    <li class="toc-h3"><a href="#mort-papers">피난민 서류 (시체안치소)</a></li>
+    <li class="toc-h2"><a href="#canvassing">피해자 추적 조사</a></li>
+    <li class="toc-h3"><a href="#edmao">에드마오 에두아르다</a></li>
+    <li class="toc-h3"><a href="#wemba">웸바 오시라트</a></li>
+    <li class="toc-h3"><a href="#madhuri">마두리 아킬라</a></li>
+    <li class="toc-h3"><a href="#leiv-aneta">레이브 &amp; 아네타 디오미디스</a></li>
+    <li class="toc-h3"><a href="#annika">안니카 실버리프</a></li>
+  </ul>
+</aside>
+
+<!-- ============================================================ -->
+
+<p>PC들이 피난민 살인 사건을 알게 되는 경로는 다양합니다 &mdash; 화염 조지(Flame Zodge)에게서 듣거나, 피난민들 자체를 통한 대안적 훅을 통해서든요. 어느 쪽이든, PC들이 직접 수사에 나서기로 결정해도 놀랄 일이 아닙니다. 조지에게 고용된 상태라면, 타리나(Tarina)를 만나러 엘프송 선술집(Elfsong Tavern)에 가기 전에 먼저 수사에 착수할 수도 있고요. 타리나를 만난 뒤 포이즌드 포세이돈(Poisoned Poseidon)으로 가기 전에 우회해서 조사할 수도 있습니다. 아니면 반탐푸르(Vanthampur) 노드 초반 중 하나를 진행한 뒤(혹은 도중에) 되돌아가서 시체를 조사하기 시작할 수도 있죠 &mdash; 다만 그때쯤이면 보상이 급격히 줄어들기는 합니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="victims">피해자들(The Victims)</h2>
+
+<p>지금까지 피해자는 여섯 명입니다:</p>
+
+<ol>
+<li><strong>에드마오 에두아르다(Edmao Eduarda)</strong></li>
+<li><strong>웸바 오시라트(Wemba Oshrat)</strong></li>
+<li><strong>마두리 아킬라(Madhuri Akhila)</strong></li>
+<li><strong>레이브 디오미디스(Leiv Diomidis)</strong></li>
+<li><strong>아네타 디오미디스(Aneta Diomidis)</strong></li>
+<li><strong>안니카 실버리프(Annika Silverleaf)</strong></li>
+</ol>
+
+<p>모든 시체는 <strong>인사이트 공원(Insight Park)</strong>에서 발견되었고, 이후 매장 준비를 위해 <strong>캔덜할로의 시체안치소(Candulhallow's Mortuarium)</strong>(DIA, p. 187)로 이송되었습니다. 각 피해자에 대한 자세한 내용은 아래 "피해자 추적 조사" 항목을 참고하세요.</p>
+
+<h3 id="additional-victims">추가 피해자(Additional Victims)</h3>
+
+<p>PC들이 사건을 맡은 뒤 24시간 이내에 포이즌드 포세이돈의 살인 작전을 차단할 가능성이 압도적으로 높습니다. 하지만 만약 그렇지 못하면, 추가 피해자가 나타납니다(아마 하루에 한 명 정도):</p>
+
+<ul>
+<li><strong>쇼흐레 레티샤(Shohreh Letitia)</strong></li>
+<li><strong>이올란테 오시라트(Iolanthe Oshrat)</strong> &mdash; 두 번째 피해자 웸바 오시라트의 자매</li>
+<li><strong>발레리아 누스카(Valeria Nuska)</strong></li>
+<li><strong>베로니카 누스카(Weronika Nuska)</strong> &mdash; 자매 관계</li>
+</ul>
+
+<p>이 피해자들은 PC들이 수사에서 길을 잃었거나 혼란에 빠졌을 때 가장 등장하기 쉽습니다. 따라서 이들을 활용하여 포이즌드 포세이돈과 암릭(Amrik)을 향한 점점 더 노골적인 단서를 적극적으로 밀어넣으세요.</p>
+
+<p>시나리오 시작 시점에 쇼흐레는 이미 살해되었고, 그 시체가 포이즌드 포세이돈 안에 있습니다. 발레리아와 베로니카는 동시에 납치되지만, 발레리아의 시체가 발견된 뒤에도 베로니카는 포이즌드 포세이돈에서 구출할 수 있을지도 모릅니다.</p>
+
+<p>시체를 인사이트 공원에 안전하게 유기할 수 없다는 게 분명해지면, 교단원들은 도시 곳곳의 무작위 장소에 시체를 버리기 시작합니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="insight-park">인사이트 공원(Insight Park)</h2>
+
+<p>인사이트 공원은 <em>아베르누스로의 하강</em> p. 189에 설명되어 있습니다. 발더스 게이트(Baldur's Gate) 남동쪽 구석, 클리프게이트(Cliffgate) 남쪽에서 성벽에 바로 인접한 가파르고 골이 깊은 상당히 넓은 부지를 차지하고 있습니다. 40년 전에는 불법 폐품 야적장이었는데, <strong>토리메시(Torimesh)</strong>라는 드루이드가 마법을 사용하여 녹슨 쓰레기 더미를 하룻밤 사이에 울창한 숲으로 뒤덮어 버렸습니다.</p>
+
+<p>공원 중앙에는 <strong>드로잉 트리(Drawing Tree)</strong>가 있는데, 토리메시가 이를 사용하여 예언적 이미지를 만들어낼 수 있습니다(자세한 내용은 책의 설명을 참고하세요).</p>
+
+<div class="sidebar">
+<h3>참고</h3>
+<p>출판본의 공원은 여기서 묘사하는 것보다 상당히 작습니다. 하지만 맵이 책의 설명과 정확히 일치하지도 않으니까요.</p>
+</div>
+
+<h3 id="timeline">타임라인(Timeline)</h3>
+
+<p>시체의 상태에 대한 설명은 아래 "캔덜할로의 시체안치소" 항목을 참고하세요(예를 들어, 토리메시도 이 정보를 알고 있을 것입니다).</p>
+
+<ul>
+<li><strong>10일 전:</strong> 첫 번째 피해자 에드마오 에두아르다가 드로잉 트리 밑에서 토리메시에 의해 발견됩니다.</li>
+<li><strong>8일 전:</strong> 웸바 오시라트의 시체가 성벽 근처 빈터에서, 아침 산책 중이던 하플링 <strong>마비아스 플리스풋(Marvias Fleecefoot)</strong>에 의해 발견됩니다.</li>
+<li><strong>5일 전:</strong> 마두리 아킬라와 레이브 디오미디스의 시체가 토리메시에 의해 발견됩니다. 둘 다 별도의 골짜기에 유기되어 있었습니다. (마두리 아킬라는 실제로는 전날 유기되었으나, 이날에야 발견된 것입니다.)</li>
+<li><strong>3일 전:</strong> 공원이 독 로드(Dock Road)와 만나는 부두 근처에서 배를 묶고 있던 어부 <strong>젠드레야 베레니(Zendreya Vereni)</strong>가 공원 경계 바로 안쪽에서 아네타 디오미디스(레이브의 자매)의 시체를 발견합니다.</li>
+<li><strong>1일 전:</strong> 안니카 실버리프의 시체가 다시 한번 드로잉 트리 앞에서 발견됩니다.</li>
+</ul>
+
+<p>PC들이 발더스 게이트에 도착하는 시점이나 개입하기까지 걸리는 시간에 따라 이 타임라인을 다소 조정해야 할 수 있습니다. 중요한 점은 살인이 <strong>엘투렐(Elturel) 함락 이전에는 시작될 수 없다</strong>는 것입니다.</p>
+
+<p>실제로, 첫 번째 살인이 엘투렐 실종과 <strong>정확히 같은 날</strong>에 일어나도록 타임라인을 조정해야 합니다. (교단원들은 그것이 올 줄 알고 있었으니까요.) 눈치 빠른 플레이어라면 이 "우연의 일치"를 알아챌 겁니다.</p>
+
+<h3 id="torimesh">드루이드 토리메시(Torimesh the Druid)</h3>
+
+<p>드루이드 토리메시는 이제 노인입니다. 공원에 시체가 유기되는 것에 대해 분노하면서도 마음이 찢어지는 상태입니다. 화염 주먹단(Flaming Fist)이 이를 막기 위해 아무것도 하지 않았다는 사실에 격분할 것입니다 &mdash; <strong>"아무것도! 아무것도 안 했다고!"</strong></p>
+
+<p>토리메시가 알려줄 수 있는 정보:</p>
+
+<ul>
+<li>피해자들의 발견 타임라인과 신원.</li>
+<li>피해자들이 이전에 공원에 있는 것을 본 적이 없다는 것.</li>
+<li>시체에 <strong>죽은 삼신(Dead Three)</strong>과 관련된 것으로 알려진 의식적 문양이 새겨져 있었다는 것.</li>
+<li>시체들은 <strong>캔덜할로의 시체안치소</strong>의 시체 수레가 수거해 갔다는 것.</li>
+</ul>
+
+<p>또한 토리메시는 안내자 역할을 하며, 시체가 발견된 각 장소로 PC들을 데려갈 수 있습니다.</p>
+
+<h3 id="drawing-tree">드로잉 트리(Drawing Tree)</h3>
+
+<p>PC들이 토리메시를 적대하지 않았다면, 그는 드로잉 트리의 예언적 이미지를 보여주겠다고 제안합니다(<em>아베르누스로의 하강</em>, p. 190 참조). 좀 더 불길한 느낌을 주고 싶다면, PC들이 가까이 다가갈 때 나무 껍질이 저절로 갈라지며 벗겨지기 시작하게 할 수도 있습니다.</p>
+
+<p>나타나는 이미지는 다음과 같습니다:</p>
+
+<ul>
+<li>깃털 날개를 가진 천사형 존재가 거대한 검을 높이 들어올리고 있습니다.</li>
+<li>천사형 존재의 팔이 사슬로 묶여 있습니다.</li>
+<li>그 아래에는 커다란 석판 같은 것이 불꽃에 휩싸이면서 두 조각으로 갈라지고 있습니다.</li>
+</ul>
+
+<div class="sidebar">
+<h3>참고</h3>
+<p>이 이미지를 살인 사건에 대한 좀 더 즉각적인 단서를 제공하는 것으로 바꿀 수도 있습니다. (예를 들어 PC들이 피해자의 가족을 이곳에 데려와서 토리메시에게 점술을 요청하면 그렇게 할 수 있겠죠.) 하지만 우리에게는 꽤 탄탄한 계시 목록이 있고, 캠페인의 결말을 암시하는 예언을 제시하는 것이 더 흥미로울 것입니다. RPG에서의 복선 연출(Foreshadowing in RPGs) 참조.</p>
+</div>
+
+<h3 id="searching-park">공원 수색(Searching the Park)</h3>
+
+<p>인사이트 공원에서 찾을 수 있는 단서는 두 가지입니다. 어떤 살인 현장에 배치할지 미리 정해두거나, PC들이 수색하는 첫 번째(혹은 처음 두) 장소에 놓는 식으로 처리할 수 있습니다. 피난민 서류는 안니카 실버리프나 웸바 오시라트의 것이어서는 안 됩니다 &mdash; 그 두 사람의 서류는 캔덜할로의 시체안치소에서 발견될 수 있으니까요.</p>
+
+<p>배치를 미리 정하는 경우, 두 단서 모두 드로잉 트리에는 놓지 않는 것을 권장합니다. 피난민 서류를 다른 장소에, 무두질 용액을 두 개의 다른 살인 현장에 배치하세요. 그러면 드로잉 트리에서는 예언과의 멋진 상호작용이 일어나고, 나머지 네 장소 중 세 곳에서 단서를 찾고, 네 번째 장소에서는 아무것도 발견하지 못하는 꽤 다양한 경험을 제공할 수 있습니다.</p>
+
+<h4 id="clue-tanner">단서 1 &mdash; 무두질 용액(Tanner's Fluid)</h4>
+
+<p>살인 현장이나 근처 바닥에서, DC 12 <strong>지능(수사)</strong> 판정에 성공한 PC는 바닥(또는 나무에 묻은 등)에서 이상한 연금술적 물질을 발견할 수 있습니다.</p>
+
+<p><strong>지능(신비학) / 지혜(의술)</strong></p>
+
+<ul>
+<li><strong>DC 12:</strong> 나무 재와 석회의 알칼리 용액입니다.</li>
+<li><strong>DC 15:</strong> 이 연금술 물질은 무두질 공방에서 가죽의 털을 부패시키고 느슨하게 만드는 데 흔히 사용됩니다.</li>
+</ul>
+
+<p>도시의 적절한 권위자에게 후속 확인을 해도 동일하게 물질과 그 출처를 알아낼 수 있습니다. <strong>인사이트 공원에서 가장 가까운 무두질 공방이 바로 포이즌드 포세이돈입니다.</strong></p>
+
+<h4 id="clue-papers">단서 2 &mdash; 피난민 서류(Refugee Papers)</h4>
+
+<p>시체가 발견된 장소 근처의 관목이나 수풀 속에 날아가 끼여 있는 상태로 발견됩니다. 서류에는 해당 피난민이 발더스 게이트에 입성하고 거주할 수 있도록 허가하는 내용이 적혀 있습니다. 하지만 DC 15 <strong>지혜(지각)</strong> 판정을 하면, 서류가 위조된 것임을 알아챕니다. 서류의 출처를 확인하려는 시도(예를 들어 하이 홀의 피난민 명부와 대조하거나, 서류에 인장이 찍혀 있다는 공식 기록관을 추적하는 등)로도 위조를 발견할 수 있습니다.</p>
+
+<p>DC 12 <strong>매력(수사)</strong> 판정을 사용하여 위조 서류에 대해 시내에서 물어볼 수 있습니다. 성공하면, PC들은 로 랜턴 선술집(Low Lantern)의 <strong>암릭 반탐푸르(Amrik Vanthampur)</strong>에게로 안내받습니다(파트 3H: 암릭의 인신매매 참조).</p>
+
+<h3 id="stakeout">공원 잠복(Staking Out the Park)</h3>
+
+<p>PC들이 공원에서 잠복 근무를 하기로 결정하면, <strong>베인의 주먹(Fists of Bane)</strong> 두 명(DIA, p. 232; 수동 지각 DC 10으로 발견)이 쇼흐레 레티샤의 시체를 유기하는 것을 목격할 가능성이 높습니다. 이들을 심문하거나 미행하여 포이즌드 포세이돈까지 추적할 수 있습니다. (쇼흐레의 옷에 피난민 서류나 무두질 용액 얼룩이 있어서 추가적이거나 보강적인 단서를 제공하게 하는 것도 쉽게 할 수 있습니다.)</p>
+
+<!-- ============================================================ -->
+<h2 id="candulhallow">캔덜할로의 시체안치소(Candulhallow's Mortuarium)</h2>
+
+<p>모든 시체는 <strong>캔덜할로의 시체안치소</strong>(<em>아베르누스로의 하강</em>, p. 187 참조)의 시체 수레에 실려 그곳 영안실로 옮겨졌습니다. 수사가 진행 중이기 때문에, 캔덜할로 영안실에서 시체를 보존하기 위해 <strong>젠틀 리포즈(gentle repose)</strong> 주문이 사용되었습니다. PC들은 조지(Zodge), 토리메시(인사이트 공원에서), 피해자의 가족(유해가 어디 보관되어 있는지 통보받은), 또는 단순히 시체가 보통 어디로 옮겨지는지 일반적인 문의를 통해 이를 알아낼 수 있습니다. (후자의 경우, PC들은 하버사이드 병원(Harborside Hospital, p. 189)이나 고통의 성소(Shrine of Suffering, p. 192)도 확인하게 될 수 있습니다.)</p>
+
+<div class="sidebar">
+<h3>선택지</h3>
+<p>시체를 세 곳에 분산시킬 수도 있고, 가장 오래된 시체는 이미 클리프사이드 묘지(Cliffside Cemetery)에 안장되었을 수도 있습니다. 고통의 성소로 옮겨진 시체는 이미 지하실의 쥐들에게 부분적으로 먹혔을 가능성이 높습니다.</p>
+</div>
+
+<h3 id="ritual-carvings">의식 문양(Ritual Carvings)</h3>
+
+<p>모든 시체에는 날카로운 칼이나 면도칼로 절개된 흔적이 있습니다. 이 섬뜩한 의식 문양들은 주로 <strong>로카릭(lokharic)</strong> 문자(용어와 각종 마법 언어에 사용되는 문자)로 되어 있지만, 끔찍한 피의 의식을 연상시키는 오망성 부적과 문자 원도 포함되어 있습니다. 또한 각 피해자의 척추 기저부에는 대략 삼각형 패턴으로 배열된 세 개의 상징이 낙인되어 있습니다.</p>
+
+<p><strong>지능(신비학/종교)</strong></p>
+
+<ul>
+<li><strong>DC 10:</strong> 문자들은 어둠의 신들에 대한 합창적 찬양으로, 필멸의 세계에 대한 지배권을 주장하는 내용입니다. "모든 도시는 어둠에 무너지리라", "피의 예언서에 예고된 바가 우리 앞에 임하였노라", "필멸의 육체에서 그 자손이 일어나리라", "예르갈의 후계자들에게 동족을 바치는 자 외에는 아무도 살아남지 못하리라" &mdash; 이런 류의 내용입니다.</li>
+<li><strong>DC 15:</strong> 비숙련자가 보기에는 어떤 마법 의식이나 주문의 일부처럼 보이겠지만, 마법적 구성 요소는 사실 헛소리입니다. 아무 의미도 없고 아무 기능도 하지 않으며, 목적보다는 효과(공포 연출)를 위해 새겨진 것 같습니다.</li>
+</ul>
+
+<p><strong>지능(종교)</strong></p>
+
+<ul>
+<li><strong>DC 10:</strong> 낙인된 상징은 <strong>베인(Bane)</strong>, <strong>미르쿨(Myrkul)</strong>, <strong>바알(Bhaal)</strong>의 신성 상징입니다 &mdash; 고대 죽음의 신 <strong>예르갈(Jergal)</strong>을 죽이고 신성에 오른 세 신이죠.</li>
+</ul>
+
+<p><strong>지혜(의술) &mdash; DC 12:</strong> 낙인은 사후에 찍힌 것입니다.</p>
+
+<h3 id="mort-tanner">무두질 용액(Tanner's Fluid)</h3>
+
+<p>DC 12 <strong>지능(수사)</strong> 판정에 성공하면, 피해자 중 한 명의 옷에 묻은 이상한 연금술적 물질 얼룩을 발견합니다.</p>
+
+<p><strong>지능(신비학) / 지혜(의술)</strong></p>
+
+<ul>
+<li><strong>DC 12:</strong> 나무 재와 석회의 알칼리 용액입니다.</li>
+<li><strong>DC 15:</strong> 이 연금술 물질은 무두질 공방에서 가죽의 털을 부패시키고 느슨하게 만드는 데 흔히 사용됩니다.</li>
+</ul>
+
+<p>도시의 적절한 권위자에게 후속 확인을 해도 동일하게 물질과 그 출처를 알아낼 수 있습니다. <strong>인사이트 공원에서 가장 가까운 무두질 공방이 바로 포이즌드 포세이돈입니다.</strong></p>
+
+<h3 id="mort-papers">피난민 서류(Refugee Papers)</h3>
+
+<p>안니카 실버리프와 웸바 오시라트의 개인 소지품에는 발더스 게이트 입성 및 거주를 허가하는 피난민 서류가 포함되어 있습니다. 하지만 DC 15 <strong>지혜(지각)</strong> 판정을 하면, 서류가 위조된 것임을 알아챕니다. 서류의 출처를 확인하려는 시도(예를 들어 하이 홀의 피난민 명부와 대조하거나, 서류에 인장이 찍혀 있다는 공식 기록관을 추적하는 등)로도 위조를 발견할 수 있습니다.</p>
+
+<p>DC 12 <strong>매력(수사)</strong> 판정을 사용하여 위조 서류에 대해 시내에서 물어볼 수 있습니다. 성공하면, PC들은 로 랜턴 선술집의 <strong>암릭 반탐푸르</strong>에게로 안내받습니다(파트 3H: 암릭의 인신매매 참조).</p>
+
+<div class="sidebar">
+<h3>선택지</h3>
+<p><em>아베르누스로의 하강</em>의 발더스 게이트 가제티어는 DM이 빠르게 확장할 수 있는 멋진 시나리오 아이디어로 도시의 각 장소를 훌륭하게 채워놓았습니다. 캔덜할로도 예외가 아닌데, 캔덜할로 가문은 시체 도난을 포함한 다양한 강령술 사기에 관여하고 있습니다. 특정 시체에 대해 물어보러 온 PC들은 &mdash; 레이렌나 캔덜할로(Leylenna Candulhallow)가 자기 실험을 위해 빼돌린 더 유명한 시체를 대체하기 위해 사용했을 수 있는 시체를 찾는 과정에서 &mdash; 우연히 이 부패를 발견하게 될 좋은 기회입니다. 이를 작은 사이드 퀘스트로 발전시키는 것도 비교적 쉽지만, PC들을 본 수사에서 완전히 탈선시키는 미끼가 될 약간의 위험은 있습니다.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="canvassing">피해자 추적 조사(Canvassing Victims)</h2>
+
+<p>PC들이 피해자들의 배경을 추적하면, 피해자에 대한 배경 정보를 알려줄 수 있는 친구 및/또는 가족을 찾을 수 있습니다. 이 자료를 미리 준비해둘 수도 있지만, 아래의 간략한 전기적 스케치와 핵심 정보 요약이 있으면 상호작용을 즉흥으로 진행하기가 꽤 쉬울 것입니다.</p>
+
+<p>즉흥 진행 시 고려할 사항:</p>
+
+<ul>
+<li>피난민이라면, 엘투렐에서 발더스 게이트까지 어떻게 왔는지에 대한 이야기를 생각해보세요.</li>
+<li>발더스 게이트에 도착한 후 피난민으로서 겪은 주목할 만한 경험은 무엇인가?</li>
+<li>죽은 삼신 교단원들에게 어떻게 납치당했는가? 납치 과정을 묘사할 수 있는 목격자나 남겨진 증거가 있었는가? (실제 목격자는 드물어야 하지만, 죽은 삼신 교단원이 확실히 관여했다는 것을 확인해줄 수 있습니다.)</li>
+</ul>
+
+<p>또한, PC들이 여기서 획득할 수 있는 핵심 단서가 세 가지 있습니다:</p>
+
+<ul>
+<li><strong>암릭을 가리키는 위조 피난민 서류.</strong> DC 15 <strong>지혜(지각)</strong> 판정으로 위조임을 알아챕니다. 서류 출처 확인 시도(하이 홀의 피난민 명부 대조 또는 공식 기록관 추적 등)로도 발견 가능.</li>
+<li><strong>피해자들이 암릭을 통해 도시에 밀입국했다는 구두 증언.</strong></li>
+<li><strong>모든 피해자가 엘투렐 기사이거나 기사와 관련이 있다는 다양한 단서.</strong></li>
+</ul>
+
+<p>각 피해자의 설명에는 관련 단서의 간략한 요약이 포함되어 있습니다.</p>
+
+<h3 id="edmao">에드마오 에두아르다(Edmao Eduarda)</h3>
+
+<p>첫 번째 피해자. 10일 전에 자택에서 끌려갔습니다. 이후의 피해자들과 달리, 에두아르다는 <strong>발더스 게이트 토박이</strong>였습니다. 엘프 아내 <strong>네스케(Neske)</strong>와 하프엘프 아들 <strong>루스(Luus)</strong>가 남아 있습니다.</p>
+
+<ul>
+<li>에두아르다의 벽난로 위에는 <strong>지옥기수단(Hellrider)의 맨틀</strong>이 걸려 있습니다. 이것은 에드마오의 아버지 <strong>노르바에르 에두아르다(Norbaer Eduarda)</strong>의 것으로, 결혼 후(에드마오가 태어나기 전) 발더스 게이트로 은퇴한 인물입니다.</li>
+</ul>
+
+<h3 id="wemba">웸바 오시라트(Wemba Oshrat)</h3>
+
+<p>웸바의 자매 <strong>이올란테(Iolanthe)</strong>는 엘투렐의 마법사 <strong>베르 뇔미엔(B&egrave;r N&ouml;lmien)</strong>의 수습생이었습니다. 위기가 시작되자, 베르가 텔레포테이션 서클을 사용하여 이올란테, 웸바, 그리고 약 12명의 다른 피난민을 발더스 게이트로 직접 대피시켰습니다. 웸바는 발더스 게이트에 도착한 지 단 하루 만에 사라졌고, 그 다음 날 시체가 발견되었습니다.</p>
+
+<ul>
+<li>이올란테와 웸바는 <strong>암릭에게서 서류를 받은 최초의 피난민</strong> 중 하나였습니다. (성문이 아직 폐쇄되기 전이었지만, 적절한 서류가 필요했고 암릭은 "하이 홀의 인맥"을 이용해 저렴한 가격에 서류를 만들어주겠다고 제안했습니다.) 이올란테는 아직 자기 서류를 갖고 있고, 웸바의 서류는 캔덜할로의 시체안치소에 있는 그의 소지품 사이에 있습니다.</li>
+<li>이올란테는 엘투렐 함락 직전의 마지막 순간들도 묘사할 수 있습니다. 스승 베르는 도시 전체가 믿을 수 없이 강력한 마법장의 영향을 받고 있다는 것을 알아챘을 것입니다. 특히, 베르를 포함한 더 많은 사람들이 뒤따라올 예정이었습니다. 두 번째 서클이 열렸지만, 갑자기 꺼져버렸습니다(엘투렐이 지옥으로 보내져 주문이 교란된 것입니다). DC 15 <strong>지능(신비학)</strong> 판정에 성공하면, 주문이 그렇게 갑자기 끊기는 것은 카운터스펠, 반마법장이 갑자기 발동하는 것, 또는 포탈의 한쪽 끝이 주문의 범위 밖으로 이동하는 것과 일치한다는 것을 알 수 있습니다.</li>
+<li>이올란테와 웸바의 어머니는 <strong>동반자 기사단(Order of the Companion)</strong>의 기사입니다.</li>
+</ul>
+
+<h3 id="madhuri">마두리 아킬라(Madhuri Akhila)</h3>
+
+<p>마두리는 첫 번째 피난민 물결에서, 하류로 향하는 배를 타고 발더스 게이트에 도착했습니다. 도시에 다른 가족은 없지만, 같은 배를 타고 온 다른 피난민 <strong>샹(Sjang)</strong>과 <strong>알바에르(Albaer)</strong>와 함께 지내고 있었습니다. 7일 전에 문이 부서져 있고 마두리가 사라진 것을 발견했습니다.</p>
+
+<ul>
+<li>이올란테, 웸바 오시라트와 마찬가지로, 이들은 <strong>암릭에게서 서류를 받은 최초의 피난민</strong> 중 하나였습니다. (성문은 아직 폐쇄되지 않았지만, 적절한 서류가 여전히 필요했습니다.)</li>
+<li>마두리의 서류는 샹, 알바에르와 함께 쓰던 방에 남겨져 있습니다. PC들이 그의 빈약한 소지품을 뒤지면 나올 것입니다. (샹과 알바에르도 자기 서류를 갖고 있습니다.)</li>
+<li>마두리의 아버지는 <strong>지옥기수단</strong>이었습니다. (샹과 알바에르가 유가족에 대해 물으면 이것을 언급할 수 있고, 아니면 그가 아직 살아있는지도 모른다고 자연스럽게 한탄할 수도 있습니다. 마두리는 엘투렐에서 내려오는 배 위에서 자기 아버지 이야기를 했었습니다.)</li>
+</ul>
+
+<h3 id="leiv-aneta">레이브 &amp; 아네타 디오미디스(Leiv &amp; Aneta Diomidis)</h3>
+
+<p>레이브와 아네타는 남매였으며, 둘 다 <strong>지옥기수단</strong>이었습니다. 전설적인 지옥기수단의 돌격(Charge of the Hellriders) 이래로 디오미디스 가문에서 한 명은 항상 지옥기수단에 있었다고 합니다. PC들처럼, 이들도 피난민 캐러밴을 이끌고 강을 따라 발더스 게이트로 내려왔는데, 성문이 닫혀 있는 것을 발견했습니다. 6일 전에 실종되었습니다.</p>
+
+<ul>
+<li>이들이 도왔던 많은 피난민들이, 레이브와 아네타가 <strong>암릭 반탐푸르를 통해 서류를 발급받도록 도와주었다</strong>고 증언할 것입니다. 성문이 닫혀 있었음에도 모두를 도시 안으로 들여보낸 것입니다.</li>
+</ul>
+
+<h3 id="annika">안니카 실버리프(Annika Silverleaf)</h3>
+
+<p>안니카 실버리프는 <strong>동반자 기사단</strong>의 하프엘프 기사였습니다. 성 밖 야영지에 전달할 구호 물자를 위한 모금 활동을 도시에서 조직하고 있었습니다. 2일 전에 실종되었을 때, 그녀는 인도주의적 노력의 일환으로 피난민을 남쪽 암(Amn)이나 북쪽 워터딥(Waterdeep)으로 보내기 위해 선장 길드(Captain's Guild)와 협상 중이었습니다.</p>
+
+<ul>
+<li>그녀는 <strong>암릭 반탐푸르와 긴밀하게 협력</strong>하며, 야영지의 피난민들을 그의 서비스에 연결시키고 있었습니다. (그녀가 서류가 위조라는 것을 알았는지는 불확실하지만, 알았더라도 아마 상관하지 않았을 것입니다.)</li>
+<li>그녀의 서류는 캔덜할로의 시체안치소에 있는 개인 소지품에 포함되어 있습니다.</li>
+<li>안니카는 <strong>동반자 기사단의 창설 멤버</strong> 중 한 명이었습니다. 붉은 쿠데타의 밤(Night of the Red Coup)에 고위 감시자 나자 벨란디(High Watcher Naja Bellandi)의 저항군에 합류했는데, 그녀의 엘프 아버지가 대기수 이카이아(High Rider Ikaia)에 의해 뱀파이어로 변했기 때문입니다(파트 4B 참조).</li>
+</ul>
+
+<div class="section-divider">&#8258; &#8258; &#8258;</div>
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+document.addEventListener('click', function(e) {
+  var img = e.target;
+  if (img.tagName === 'IMG' && img.closest('.illustration')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  if (img.tagName === 'IMG' && img.closest('.map-container')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>리믹스 파트 3F-B: 죽은 삼신의 지하 감옥 — 수정된 키(Revised Key)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  ul, ol { margin: 0 0 14px 24px; }
+  li { margin-bottom: 6px; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  strong { color: var(--heading); }
+
+  /* Compact Chapter Nav */
+  .chapter-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 24px;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding: 8px 0;
+    gap: 8px;
+  }
+  .chapter-nav .nav-btn {
+    padding: 8px 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    min-width: 80px;
+    text-align: center;
+  }
+  .chapter-nav .nav-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .chapter-nav .nav-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .chapter-nav .nav-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chapter-nav .nav-home {
+    padding: 8px 12px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .chapter-nav .nav-home:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  .illustration {
+    margin: 24px 0;
+    text-align: center;
+  }
+  .illustration img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 12px var(--shadow);
+  }
+  .illustration .caption {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+    color: var(--accent2);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Lightbox */
+  .illustration img { cursor: zoom-in; }
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 16px; right: 20px;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    background: none;
+    border: none;
+    font-family: sans-serif;
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="DIA-home.html" class="nav-home" title="홈">⌂</a>
+  <a href="DIA-remix-part3F.html" class="nav-btn" title="파트 3F">◀ 파트 3F</a>
+  <span class="nav-title">파트 3F-B: 수정된 키</span>
+  <a href="DIA-remix-part3F-C.html" class="nav-btn" title="파트 3F-C">파트 3F-C ▶</a>
+</nav>
+
+<h1>
+  리믹스 파트 3F-B: 죽은 삼신의 지하 감옥 — 수정된 키
+  <span class="subtitle">Dungeon of the Dead Three — Revised Key</span>
+</h1>
+
+<!-- Sidebar TOC -->
+<button class="sidebar-toc-toggle" id="tocToggle" onclick="document.getElementById('sidebarToc').classList.toggle('open'); this.classList.toggle('open');">목차</button>
+<aside class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="document.getElementById('sidebarToc').classList.remove('open'); document.getElementById('tocToggle').classList.remove('open');">✕</button>
+  <h4>수정된 키 목차</h4>
+  <ul>
+    <li class="toc-h2"><a href="#design-note">디자인 노트</a></li>
+    <li class="toc-h2"><a href="#d4">D4. 북쪽 마사지실</a></li>
+    <li class="toc-h2"><a href="#d7">D7. 바알의 제단</a></li>
+    <li class="toc-h2"><a href="#d9">D9. 죽은 삼신의 문</a></li>
+    <li class="toc-h2"><a href="#d12">D12. 베인의 제단</a></li>
+    <li class="toc-h2"><a href="#d13">D13. 시체안치소</a></li>
+    <li class="toc-h2"><a href="#d15">D15. 작은 침수실 &amp; 가스 축적</a></li>
+    <li class="toc-h2"><a href="#d17">D17. 미르쿨의 제단</a></li>
+    <li class="toc-h2"><a href="#d18">D18. 큰 침수실 &amp; 가스 축적</a></li>
+    <li class="toc-h2"><a href="#d19">D19. 부분 붕괴된 납골당</a></li>
+    <li class="toc-h2"><a href="#d20">D20. 반쯤 약탈된 납골당</a></li>
+    <li class="toc-h2"><a href="#d23">D23. 문</a></li>
+    <li class="toc-h2"><a href="#d26">D26. 바알의 안식처</a></li>
+    <li class="toc-h2"><a href="#d30">D30. 티아마트의 도난 보물</a></li>
+  </ul>
+</aside>
+
+<!-- ============================================================ -->
+
+<p>편의를 위해 이 키 항목들은 책의 해당 항목을 완전히 대체하도록 설계되었습니다(별도 언급이 없는 한).</p>
+
+<div class="sidebar">
+<h3 id="design-note">디자인 노트</h3>
+<p>수정된 키를 조립하는 제 실제 프로세스는 꽤 간단합니다. 먼저 변경해야 한다고 생각하는 것들의 목록을 쭉 훑어봅니다. 이렇게 공개적으로 사고 과정에 대한 에세이급 설명을 쓰지 않을 때는, 보통 짧은 글머리 목록 정도입니다.</p>
+
+<p>수정이 필요하다고 생각하는 것 외에도, 이 목록에는 키를 읽으면서 상상력에 떠오른 멋진 아이디어들도 포함됩니다. 구역 D13과 시체댐프 좀비에서 약간 볼 수 있지만, 이 연습에서는 대부분 자제했습니다.</p>
+
+<p>이것이 끝나면, 단서 목록(파트 3C에서 본 것)을 쭉 훑으면서, 해당 장소에 나타나야 할 모든 단서를 배치합니다. 수정된 키를 개발하면서 추가 단서가 새로 생겨 단서 목록에 추가되는 것(반대 방향)도 드문 일이 아닙니다.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="d4">D4. 북쪽 마사지실(North Massage Room)</h2>
+
+<p>이 방의 일반 키(<em>DIA</em>, p. 20)에 추가:</p>
+
+<p><strong>비밀문:</strong> 옆에 있는 스테인드글라스 창의 원형 조각을 돌리면 열립니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="d7">D7. 바알의 제단(Bhaal's Altar)</h2>
+
+<p>이 방의 일반 키(<em>DIA</em>, p. 21)에 추가로, 제단 위 내장 옆에 <strong>밀랍 서판과 첨필(stylus)</strong>이 놓여 있습니다. 이 서판에는 내장에서 점을 쳐 얻은 다양한 예언이 적혀 있습니다:</p>
+
+<div class="read-aloud">
+<p>알라운도의 집에서 상자가 열릴 때, 앞으로 나아갈 길이 드러나리라.</p>
+<p>넷 중 하나는 지옥에 떨어지리라. 넷 중 하나는 벼락에 맞으리라. 넷 중 하나는 일어서리라.</p>
+<p>위대한 태양이 검어지고, 아베르누스의 악마 군단이 엘투렐을 정복하리라.</p>
+<p>워터딥, 아스카틀라(?), 이리아에보르의 대도시에 분쟁이 닥치리라.</p>
+<p>화산의 불이 오르스라운의 봉우리를 뒤흔들리라.</p>
+<p>서쪽에 대해 셀루네의 눈물이 말하리니, 그것이 내해(Inner Sea) 위에 눈물을 흘리리라.</p>
+</div>
+
+<div class="sidebar">
+<h3>DM 참고</h3>
+<p>"알라운도의 집"은 캔들킵(Candlekeep)을 가리킵니다(알라운도가 캔들킵을 설립했고, 바알스폰(Bhaalspawn)의 도래를 예견했습니다). "위대한 태양"은 동반자(the Companion)를 가리킵니다. 나머지 예언들은 의미 없는 것이거나 <em>아베르누스로의 하강</em>과 관련 없는 것입니다(플레이어들이 "넷 중 하나"가 4인 의회(Council of Four)를 가리킨다고 추론할 수는 있습니다).</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="d9">D9. 죽은 삼신의 문(Dead Three Doors)</h2>
+
+<div class="map-note">아베르누스로의 하강 - 죽은 삼신의 지하 감옥 [지도 참조]</div>
+
+<p>각 문에는 서로 다른 인물의 전신 부조가 새겨져 있습니다.</p>
+
+<p><strong>지혜(감지) - DC 10:</strong> 조각들은 매우 오래된 것입니다. 석재가 마모되어 있고, 일부 조각은 손상의 흔적이 보이며 최근 수리한 증거도 있습니다. (예를 들어, 바알(Bhaal)의 낫 같은 손 하나가 부러졌다가 최근에야 다시 붙인 것으로 보입니다.)</p>
+
+<p><strong>지능(종교) - DC 10:</strong> 성공 시, 이 인물들이 죽은 삼신(Dead Three)을 묘사한 것임을 알아봅니다.</p>
+
+<ul>
+<li><strong>동쪽 문 — 베인(Bane):</strong> 양동이 투구를 쓴 키 큰 갑옷 무장 남성. 오른쪽 건틀릿은 검은색으로 칠해져 있으며 족쇄를 쥐고 있습니다.</li>
+<li><strong>남쪽 문 — 미르쿨(Myrkul):</strong> 두건 아래에 얼굴이 가려진 외투 입은 인물. 해골 같은 손에 비명을 지르는 인간 두개골을 쥐고 있습니다.</li>
+<li><strong>서쪽 문 — 바알(Bhaal):</strong> 강인한 체격에 해골 머리를 가진 남성으로, 손이 있어야 할 곳에 길고 곡선진 칼날이 달려 있습니다.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="d12">D12. 베인의 제단(Bane's Altar)</h2>
+
+<p>이 방의 일반 키(<em>DIA</em>, p. 22)를 대체로 사용하되, 이그나스(Yignath)가 이 자리에 있을 경우, 클림 야소(Klim Jhasso)를 재미로 고문하는 대신 <strong>흑강철 면도날(blacksteel razor)</strong>로 그의 피부에 지옥어 문자를 새기고 있습니다. (이그나스가 더 이상 이 자리에 없다면, 흑강철 면도날이 제단 위에 놓여 있습니다.)</p>
+
+<h4>흑강철 면도날(Blacksteel Razor)</h4>
+<p>흑강철은 어둡고, 소리가 없으며, 빛을 반사하지 않습니다. 다른 물체나 생물체에 부딪혀도 소리가 나지 않습니다(부러지거나 산산조각이 나도 마찬가지). 피가 면도날에 달라붙어, 튀거나 떨어지지 않습니다.</p>
+
+<h4>지옥어 새김(Infernal Carvings)</h4>
+<div class="read-aloud">
+<p>"베인(Bane)의 이름으로, 아베르누스의 대악마 자리엘(Zariel)에게 찬사를 바칩니다. 베인의 이름으로, 한 신의 축복을 다른 신에게 드립니다. 베인의 이름으로, 엘투르가드(Elturgard)의 불경한 정복에 축복을 내립니다. 베인의 이름으로, 그녀의 이름 아래 태어난 공포와 폭정에 찬사를 바칩니다."</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="d13">D13. 시체안치소(Morgue)</h2>
+
+<ul>
+<li>방 안쪽 끝이 무너져 있습니다. 나무 들보 네 개가 천장을 받치고 있습니다.</li>
+<li>석관형 슬래브 세 개가 작업대로 개조되어 있습니다. 두 개는 약병, 증류기 및 유사한 연금술/마법 기구로 덮여 있습니다. 가운데 슬래브에는 인간 사체가 부분적으로 해부된 채 놓여 있으며, 다양한 장기와 내장이 주위에 깔끔하게 정리되어 있습니다. (플레니스(Flennis)가 여기서 기습당하면, 적극적으로 시체를 연구하고 있을 것입니다.)</li>
+<li>여러 개의 대형 파이프가 무너진 잔해 벽에 볼트로 고정되어 있습니다. 이 파이프들은 석관형 슬래브 근처에 서 있는 거대한 철제 통(vat)을 향해 꼬여 들어갑니다.</li>
+<li>이 방에서 데려가지 않았다면, 부풀어 오른 <strong>시체댐프 좀비</strong> 세 마리가 북쪽 벽에 묶여 있습니다. 철제 통에서 나오는 다양한 관이 시체들에 연결되어 있습니다.</li>
+</ul>
+
+<p><strong>지혜(감지) - DC 14:</strong> 매우 희미한 썩은 달걀 냄새를 감지합니다. 무너진 벽 쪽으로 추적하면 냄새가 더 강해집니다. (구체적으로 붕괴 현장을 조사하는 사람은 자동으로 냄새를 감지합니다.)</p>
+
+<p>이것은 <strong>시체댐프 가스(corpsedamp gas)</strong>입니다. 전체 설명(가스 식별 및 속성에 대한 지침 포함)은 구역 D15 또는 D18을 참조하세요. 가스가 충분히 집중되지 않았으므로 여기서는 폭발 위험이 없습니다.</p>
+
+<h4>철제 통(Iron Vat)</h4>
+<p>이것은 무너진 벽을 통해 새어 나오는 시체댐프 가스를 모으는 가압 용기입니다. 연결된 관들은 시체댐프 좀비 제작용으로 설계되었습니다(현재 작물은 대략 완성 상태). 관 끝에는 긴 바늘이 달려 있으며, 기본적으로 시체에 그냥 꽂아 넣은 것입니다.</p>
+
+<p>여기서 파이프가 시체댐프 가스를 수확하지 않았다면, 누출이 훨씬 더 심각했을 것입니다.</p>
+
+<h4>해부된 시체(Dissected Corpse)</h4>
+<p>DC 14 <strong>지능(비전) 판정</strong> — 누군가가 개별 내장 기관을 시체댐프 가스에 노출시키는 실험을 하고 있다는 것을 알 수 있습니다.</p>
+
+<h4>작업대(Work Tables)</h4>
+<p>여기서 <strong>숨겨진 군주의 서신(Missive of the Hidden Lord)</strong> 핸드아웃을 찾을 수 있습니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="d15">D15. 작은 침수실 &amp; 가스 축적(Small Flooded Room &amp; Gas Buildup)</h2>
+
+<p><strong>접근 시:</strong> DC 10 지혜(감지) 판정으로 썩은 달걀 냄새를 감지합니다. (방 안에 들어가면 냄새가 누구나 즉시 알아챌 수 있는 역겨운 악취로 강해집니다.)</p>
+
+<ul>
+<li>썩어가는 나무 들보 네 개가 탁한 물에서 솟아 천장을 받치고 있습니다.</li>
+<li>북서쪽 모서리에 잔해 더미.</li>
+<li>북쪽 통로는 폭이 겨우 2.5피트로 좁아집니다.</li>
+</ul>
+
+<p><strong>잔해:</strong> 여기에는 관심을 끌 만한 것이 없습니다.</p>
+
+<h4>시체댐프 가스(Corpsedamp Gas)</h4>
+<p>명화(open flame)가 폭발을 유발합니다(4d6 화염 피해, DC 15 민첩 내성 굴림 성공 시 절반). 모든 나무 들보가 폭발로 파괴되며, 이는 천장 붕괴를 유발할 수 있습니다. 폭발은 가스를 태워 없애며, 24시간 후에 다시 천천히 축적되어 위험해집니다.</p>
+
+<ul>
+<li><strong>지능(비전) / 지혜(생존) - DC 12:</strong> 가스를 스팅크댐프(stinkdamp), 즉 독성 폭발성 가스로 잘못 식별합니다.</li>
+<li><strong>지능(비전) / 지혜(생존) - DC 15:</strong> 가스를 시체댐프(corpsedamp)로 정확히 식별합니다. 주로 강령술사들이 썩어가는 시체에서 추출하며, 그들의 작업에 유리한 여러 속성을 가지고 있습니다.</li>
+<li><strong>지능(비전) - DC 18:</strong> 시체댐프 가스는 특히 시체댐프 좀비 — 가스 주입으로 부풀어 오른 비틀거리는 언데드 — 를 만들 수 있는 것으로 유명합니다. 시체댐프 좀비는 화염에 취약하지만, 죽으면 폭발합니다.</li>
+</ul>
+
+<h4>천장 붕괴(Roof Collapse)</h4>
+<p>들보가 파괴되면, 천장이 무너질 확률 25%. 4d10 타격 피해, DC 15 민첩 내성 굴림 성공 시 절반. 방은 열린 상태로 남지만, 험지(difficult terrain)가 됩니다.</p>
+
+<p>이 구역에서의 천장 붕괴는 추가로 이 방으로 이어지는 각 통로를 따라 1d4 x 5피트까지 확장될 확률이 50%입니다. (각 통로별로 판정합니다.)</p>
+
+<!-- ============================================================ -->
+<h2 id="d17">D17. 미르쿨의 제단(Myrkul's Altar)</h2>
+
+<ul>
+<li>마른 방.</li>
+<li>북쪽 벽이 부분적으로 무너져 있습니다.</li>
+<li>방 중앙에 석재 제단이 있으며, 주위에 인간형 두개골과 뼈가 쌓여 있습니다. 제단 위에는 검은 밀랍으로 만든 반쯤 녹은 불 꺼진 촛불 수십 개가 놓여 있습니다.</li>
+</ul>
+
+<p><strong>지혜(감지) - DC 14:</strong> 매우 희미한 썩은 달걀 냄새를 감지합니다. 무너진 북쪽 벽 쪽으로 추적하면 냄새가 더 강해집니다. (구체적으로 북쪽 벽을 조사하는 사람은 자동으로 냄새를 감지합니다.)</p>
+
+<p>이것은 시체댐프 가스입니다. 전체 설명(가스 식별 및 속성에 대한 지침 포함)은 구역 D15 또는 D18을 참조하세요. 가스가 충분히 집중되지 않았으므로 여기서는 폭발 위험이 없습니다.</p>
+
+<h4>제단(Altar)</h4>
+<ul>
+<li>검은 촛불을 하나 이상 켜면, 벽에 검은 글씨를 드러내는 초록빛이 비춥니다. 공용어로 <strong>"일어나 셈을 받아라!(RISE AND BE COUNTED!)"</strong>라고 적혀 있습니다.</li>
+<li>누군가가 제단에서 5피트 이내에서 "일어나 셈을 받아라!"라고 말하면, 글자가 사라지면서 방 북쪽 끝 잔해 아래 숨겨진 뼈가 일어나 서로 맞물려 <strong>세 구의 애니메이트 인간 해골</strong>이 됩니다. 이 해골들은 그 말을 한 자의 명령에 복종합니다.</li>
+</ul>
+
+<h4>검은 촛불(Black Candles)</h4>
+<p>이 촛불들에는 죽은 삼신 광신도들의 표적 이름이 적혀 있습니다 — 에드마오 에두아르다(Edmao Eduarda), 웸바 오슈라트(Wemba Oshrat), 마두리 아킬라(Madhuri Akhila), 레이브 디오미드(Leiv Diomids), 아네타 디오미디스(Aneta Diomidis), 안니카 실버리프(Annika Silverleaf), 쇼레 레티시아(Shohreh Letitia), 이올란테 오슈라트(Iolanthe Oshrat). (암릭(Amrik)이 그들을 식별했다면 발레리아 누스카(Valeria Nuska)와 베로니카 누스카(Weronika Nuska)도 포함될 것입니다.)</p>
+
+<p><strong>지능(종교) - DC 14:</strong> 이 촛불들은 이름이 적힌 자들에게 상징적으로 "미르쿨의 축복"(즉, 죽음)을 내리는 것입니다. 미르쿨 신도들은 촛불의 연기가 올라가서 그렇게 "축복받은" 자의 폐를 찾아가 검게 만든다고 믿습니다. (마법적 버전의 촛불은 실제로 그렇게 합니다.)</p>
+
+<div class="sidebar">
+<h3>DM 정보</h3>
+<p>이 의식은 광신도들의 어둠의 작업에 필수적인 부분이 아닙니다. 사제들이 자신들의 과업에 불경한 축복을 바치는 방식일 뿐입니다.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="d18">D18. 큰 침수실 &amp; 가스 축적(Large Flooded Room &amp; Gas Buildup)</h2>
+
+<p><strong>접근 시:</strong> DC 10 지혜(감지) 판정으로 썩은 달걀 냄새를 감지합니다. (방 안에 들어가면 냄새가 누구나 즉시 알아챌 수 있는 역겨운 악취로 강해집니다.)</p>
+
+<ul>
+<li>방이 침수되어 있습니다.</li>
+<li>천장이 수많은 나무 들보로 지탱되고 있습니다.</li>
+</ul>
+
+<h4>시체댐프 가스(Corpsedamp Gas)</h4>
+<p>명화가 폭발을 유발합니다(4d6 화염 피해, DC 15 민첩 내성 굴림 성공 시 절반). 모든 나무 들보가 폭발로 파괴되며, 이는 천장 붕괴를 유발할 수 있습니다. 폭발은 가스를 태워 없애며, 24시간 후에 다시 천천히 축적되어 위험해집니다.</p>
+
+<ul>
+<li><strong>지능(비전) / 지혜(생존) - DC 12:</strong> 가스를 스팅크댐프(stinkdamp), 즉 공기보다 무거운 독성 폭발성 가스로 잘못 식별합니다.</li>
+<li><strong>지능(비전) / 지혜(생존) - DC 15:</strong> 가스를 시체댐프(corpsedamp)로 정확히 식별합니다. 주로 강령술사들이 썩어가는 시체에서 추출하며, 그들의 작업에 유리한 여러 속성을 가지고 있습니다. 스팅크댐프로 쉽게 오인되며, 마찬가지로 공기보다 무겁습니다.</li>
+<li><strong>지능(비전) - DC 18:</strong> 시체댐프 가스는 특히 시체댐프 좀비 — 가스 주입으로 부풀어 오른 비틀거리는 언데드 — 를 만들 수 있는 것으로 유명합니다. 시체댐프 좀비는 화염에 취약하지만, 죽으면 폭발합니다.</li>
+</ul>
+
+<h4>천장 붕괴(Roof Collapse)</h4>
+<p>들보가 파괴되면, 천장이 무너질 확률 25%. 4d10 타격 피해, DC 15 민첩 내성 굴림 성공 시 절반. 방은 열린 상태로 남지만, 험지가 됩니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="d19">D19. 부분 붕괴된 납골당(Partially Collapsed Crypt)</h2>
+
+<ul>
+<li>방 대부분이 무너져 내렸습니다.</li>
+<li>잔해 더미가 석관을 대부분 덮고 있습니다.</li>
+</ul>
+
+<p><strong>지혜(감지) - DC 14:</strong> 매우 희미한 썩은 달걀 냄새를 감지합니다. 무너진 남쪽 벽 쪽으로 추적하면 냄새가 더 강해집니다. (구체적으로 붕괴 현장을 조사하는 사람은 자동으로 냄새를 감지합니다.)</p>
+
+<p>이것은 시체댐프 가스입니다. 전체 설명(가스 식별 및 속성에 대한 지침 포함)은 구역 D15 또는 D18을 참조하세요. 가스가 충분히 집중되지 않았으므로 여기서는 폭발 위험이 없습니다.</p>
+
+<p><strong>석관:</strong> 비어 있습니다. 수년 전에 약탈당했습니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="d20">D20. 반쯤 약탈된 납골당(Half-Plundered Crypt)</h2>
+
+<p>이 구역의 일반 키 항목(<em>DIA</em>, p. 24)에 추가로, 납골당 안쪽 벽이 심하게 금이 가 있지만 수리한 흔적이 보입니다. (구역 D19처럼 이 방에도 시체댐프가 새어 들어오고 있었지만, 균열을 봉인하여 누출을 방지하려는 노력이 있었습니다.)</p>
+
+<!-- ============================================================ -->
+<h2 id="d23">D23. 문(Door)</h2>
+
+<p>비밀문 대신, D27로 이어지는 문은 <strong>일반 나무문</strong>입니다.</p>
+
+<!-- ============================================================ -->
+<h2 id="d26">D26. 바알의 안식처(Bhaal's Rest)</h2>
+
+<ul>
+<li>방 한가운데에 열린 석관이 있지만, 바닥은 치워져 있습니다(베인(Bane) 추종자들의 휴식처로 사용).</li>
+<li>바닥에 먼지 쌓인 침낭 여섯 개.</li>
+<li>북쪽과 남쪽 벽에 촛대 거치대.</li>
+<li>안쪽 벽에 발자물통(footlocker) 세 개가 놓여 있습니다.</li>
+</ul>
+
+<h4>발자물통(Footlockers)</h4>
+<p>두 개는 오랜 사용으로 낡고 부서진 것이고, 세 번째는 분명히 더 잘 만들어진 것으로 자물쇠도 채워져 있습니다. (이 마지막 발자물통은 바즈(Vaaz)의 것으로, <strong>숨겨진 군주의 서신</strong>과 <strong>바즈의 서신(Vaaz' Correspondence)</strong> 핸드아웃이 들어 있습니다.)</p>
+
+<!-- ============================================================ -->
+<h2 id="d30">D30. 티아마트의 도난 보물(Tiamat's Stolen Treasure)</h2>
+
+<p>상자 4를 제외하고 이 방의 일반 키 항목(<em>DIA</em>, p. 26)을 사용합니다.</p>
+
+<p><strong>상자 4</strong>에는 불 첨탑(fire spires)이 달린 청동 왕관(250 gp)이 들어 있으며, 무게는 2.5파운드입니다. 각 첨탑은 다섯 종류의 색채 용(흑, 청, 녹, 적, 백) 중 하나를 본떠 만들어지고 칠해져 있습니다. 형태에 맞춘 완충재에 조심스럽게 포장되어 있으며, 이 완충재에는 가면에 맞는 것처럼 보이는 두 번째 빈 공간이 있지만, 거기에는 아무것도 없습니다. (<strong>DM 참고:</strong> 상자 3의 가면과는 맞지 않습니다. 이 가면은 반탐퍼 저택에 있습니다.)</p>
+
+<h4>왕관(Crown)</h4>
+<p>왕관 안쪽에 용어(Draconic)로 새겨진 문구가 있습니다: <strong>"아베르누스에서 우리는 그녀를 소환한다. 티아마트에게 우리는 충성을 맹세한다."</strong></p>
+
+<!-- ============================================================ -->
+
+<div class="section-divider">* * *</div>
+
+<nav class="chapter-nav">
+  <a href="DIA-home.html" class="nav-home" title="홈">⌂</a>
+  <a href="DIA-remix-part3F.html" class="nav-btn" title="파트 3F">◀ 파트 3F</a>
+  <span class="nav-title">파트 3F-B: 수정된 키</span>
+  <a href="DIA-remix-part3F-C.html" class="nav-btn" title="파트 3F-C">파트 3F-C ▶</a>
+</nav>
+
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+document.addEventListener('click', function(e) {
+  var img = e.target;
+  if (img.tagName === 'IMG' && img.closest('.illustration')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  if (img.tagName === 'IMG' && img.closest('.map-container')) {
+    e.stopPropagation();
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+});
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
